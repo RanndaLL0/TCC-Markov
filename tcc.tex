@@ -152,7 +152,7 @@
 \label{cap:introducao}
 
 Embora sejam popularmente tratadas como dinheiro, as criptomoedas recebem a definição formal restrita de 
-``equivalentes digitais de dinheiro em espécie'' ou ``moedas digitais conversíveis'' \cite{papadopoulos2024blockchain}. 
+``equivalentes digitais de dinheiro em espécie'' ou ``moedas digitais conversíveis'' \cite{papadopoulos2024blockchain}.  
 A literatura econômica estabelece que a natureza da moeda deriva de sua utilidade prática como padrão de valor e meio 
 de troca em uma sociedade. Assim, independentemente do debate sobre o potencial de adoção das criptomoedas como 
 substitutas das moedas estatais, o propósito fundamental do Bitcoin e de redes similares é atuar como uma infraestrutura 
@@ -893,7 +893,7 @@ por ruídos.
 
 De maneira similar a \citeonline{ARAUJO}, a
 discretização será aplicada sobre os retornos logarítmicos da série temporal
-do Bitcoin \ref{eq:retorno_log} em janelas de cinco minutos. Calcularemos a média e desvio padrão dos retornos 
+do Bitcoin \ref{retorno_logaritmico} em janelas de cinco minutos. Calcularemos a média e desvio padrão dos retornos 
 normalizados e definiremos a seguinte relação:
 
 \begin{equation}
@@ -902,7 +902,7 @@ normalizados e definiremos a seguinte relação:
         -\frac{s}{3} \geq \left( r(t) - \overline{r(t)} \right) \leq \frac{s}{3} &\iff 0 \\
         \left( r(t) - \overline{r(t)} \right) > \frac{s}{3} &\iff 1 \\
     \end{aligned}
-    \label{discretizacao}
+    \label{discretizacao_eq}
 \end{equation}
 
 onde $r(t)$ é o retorno logarítmico no instante $t$, $\overline{r}$ é a média amostral dos retornos da série e $s$
@@ -985,7 +985,7 @@ Ao agrupar flutuações pouco expressivas em torno da média, essa estratégia d
     \label{fig:Araujo_tres_simbolos}
 \end{figure}
 
-O presente trabalho utilizará um alfabeto discreto construído de maneira metodologicamente similar ao referencial de três símbolos conforme apresentado na Seção~\ref{sec:discretizacao}. Porém, a análise intradia será realizada para uma escala de alta frequência, utilizando fechamentos em janelas de cinco minutos.
+O presente trabalho utilizará um alfabeto discreto construído de maneira metodologicamente similar ao referencial de três símbolos conforme apresentado na Seção~\ref{discretizacao}. Porém, a análise intradia será realizada para uma escala de alta frequência, utilizando fechamentos em janelas de cinco minutos.
 
 Para contornar a explosão combinatória e os limites computacionais que restringiram o avanço da ordem preditiva no estudo de \citeonline{ARAUJO}, esta pesquisa empregará a modelagem baseada em Cadeias de Markov de alta ordem proposta por \citeonline{RAFTERY1985}. A adoção deste modelo reduz a complexidade para uma taxa linear, tornando viável a investigação de dependências temporais em ordens substancialmente maiores do que as apresentadas na literatura de referência, sem sacrificar a confiabilidade preditiva do sistema.
 
@@ -1019,26 +1019,33 @@ A análise individual de cada um dos trabalhos relacionados permite compreender 
 
 \begin{table}[htb]
     \centering
-    \label{tab:tabela_um}
     \caption{Comparação entre trabalhos relacionados}
-    \small
-        \begin{tabularx}{\textwidth}{l X X X X}
+    \label{tab:tabela_um}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.25}
+    \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{%
+            >{\raggedright\arraybackslash}p{1.7cm}%
+            >{\raggedright\arraybackslash}X%
+            >{\raggedright\arraybackslash}X%
+            >{\raggedright\arraybackslash}X%
+            >{\raggedright\arraybackslash}X}
         \toprule
-        \textbf{Critério} & \textbf{Araújo e Barbosa (2024)} & \textbf{Trabalho 2} & \textbf{Trabalho 3} & \textbf{Este trabalho} \\
+        \textbf{Critério} & \textbf{Araújo e Barbosa (2024)} & \textbf{Nascimento (2023)} & \textbf{Chen (2025)} & \textbf{Este trabalho} \\
         \midrule
-        Objetivo & Reconstruir e prever processos de criptoativos e detectar memória de longo alcance & [resumo] & [resumo] & Prever a direção do BTC e identificar a ordem em que a memória se torna estatisticamente relevante \\
+        Objetivo & Reconstruir processos de criptoativos e detectar memória de longo alcance & Prever retornos futuros de quatro criptomoedas via Cadeias de Markov & Prever a direção do preço do Bitcoin comparando algoritmos de \textit{ML} & Prever a direção do BTC e identificar a ordem em que a memória se torna relevante \\
         \addlinespace
-        Ativos & BTC, ETH e XRP & [ativos] & [ativos] & BTC \\
+        Ativos & Bitcoin, Ethereum e Ripple & Bitcoin, Ethereum, Ripple e Litecoin & Bitcoin & Bitcoin \\
         \addlinespace
-        Granularidade & 1 hora & [gran.] & [gran.] & 5 minutos \\
+        Fechamento   & 1 hora & 24 horas & Diária e intradiária (5 min) & Intradiária (5 min) \\
         \addlinespace
-        Modelagem & (\textit{Less-than-k-Markov}) & [modelo] & [modelo] & Cadeias de Markov de alta ordem (MTD/Raftery) e HMM \\
+        Modelagem & Cadeias de Markov de alta ordem (\textit{less-than-k}) & Cadeias de Markov (1ª à 10ª ordem) & Regressão logística, LDA, QDA, SVM, XGBoost e LSTM & Cadeias de Markov de alta ordem (MTD/Raftery) e HMM \\
         \addlinespace
-        Discretização & Alfabetos de 5 e 3 símbolos & [discr.] & [discr.] & Alfabeto de 3 símbolos (limiares $s/3$, $s/4$, $s/5$) \\
+        Discretização & Alfabetos de 5 e 3 símbolos & Multiplos Alfabetos  & Binária (direção) & Alfabeto de 3 símbolos (limiares $s/3$, $s/4$, $s/5$) \\
         \addlinespace
-        Validação & Erro médio de predição \textit{vs.} modelo aleatório & [método] & [método] & Acurácia, precisão, \textit{recall}, F1 e matriz de confusão \textit{vs.} \textit{baselines} (aleatório e persistência) \\
+        Validação & Erro médio \textit{vs.} modelo aleatório & RMSE, MAE e MAPE & Acurácia, precisão, \textit{recall} e \textit{F1-score} & Acurácia, precisão, \textit{recall}, F1 e matriz de confusão \textit{vs.} \textit{baselines} \\
         \addlinespace
-        Limitação & Explosão combinatória limita a ordem ($k \geq 4$) & [limit.] & [limit.] & --- \\
+        Limitação & Explosão combinatória limita a ordem ($k \geq 4$) & Memória limita a análise até a 10ª ordem & Granularidade e número de dimensões & --- \\
         \bottomrule
         \end{tabularx}
     \par\vspace{2pt}
@@ -1101,8 +1108,6 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
     \fonte{\cite{ARAUJO}}
     \label{fig:pipeline}
 \end{figure}
-
-\subsection{}
 
 % ---------------------------------------------------------------
 \section{Cronograma de trabalho}
