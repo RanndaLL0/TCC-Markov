@@ -80,7 +80,7 @@
 
 \tipotrabalho{Trabalho de Conclusão de Curso I}
 
-\preambulo{Proposta de Trabalho de Conclusão de Curso apresentado ao SENAC Santo Amaro como requisito parcial para aprovação na disciplina de TCC1 do curso de Bacharelado em Ciência da Computação.}
+\preambulo{Proposta de Trabalho de Conclusão de Curso apresentada ao SENAC Santo Amaro como requisito parcial para aprovação na disciplina de TCC1 do curso de Bacharelado em Ciência da Computação.}
 
 % ---------------------------------------------------------------
 % COMPILA O ÍNDICE
@@ -122,9 +122,9 @@
 % ---------------------------------------------------------------
 % LISTA DE ILUSTRAÇÕES
 % ---------------------------------------------------------------
-% \pdfbookmark[0]{\listfigurename}{lof}
-% \listoffigures*
-% \cleardoublepage
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
 
 % ---------------------------------------------------------------
 % LISTA DE TABELAS
@@ -150,6 +150,14 @@
 % ===============================================================
 \chapter{Introdução}
 \label{cap:introducao}
+
+Embora sejam popularmente tratadas como dinheiro, as criptomoedas recebem a definição formal restrita de 
+``equivalentes digitais de dinheiro em espécie'' ou ``moedas digitais conversíveis'' \cite{papadopoulos2024blockchain}. 
+A literatura econômica estabelece que a natureza da moeda deriva de sua utilidade prática como padrão de valor e meio 
+de troca em uma sociedade. Assim, independentemente do debate sobre o potencial de adoção das criptomoedas como 
+substitutas das moedas estatais, o propósito fundamental do Bitcoin e de redes similares é atuar como uma infraestrutura 
+tecnológica para a transmissão online de valor econômico, e não necessariamente 
+exercer a função de moeda \cite{papadopoulos2024blockchain}.
 
 Conforme observado por \citeonline{CHUEN}, a próxima geração de sistemas monetários está intrinsecamente ligada ao avanço tecnológico. Nas últimas décadas, 
 o cenário financeiro testemunhou o surgimento de diversas modalidades inovadoras de transações digitais. Esses sistemas de pagamentos alternativos apresentam 
@@ -292,9 +300,9 @@ conhecidos é o bitcoin, que é, na verdade, uma criptomoeda como apontado por \
 
 \subsubsection{Criptomoedas}
 
-Criptomoedas são definidas como "moedas digitais conversíveis"e em outras legislações
-como "equivalente digital a dinheiro" \cite{papadopoulos2024blockchain}. De todo modo essas
-definições são aplicadas as criptomoedas que são convertidas para moedas oficiais utilizando
+Criptomoedas são definidas como ``moedas digitais conversíveis'' e em outras legislações
+como ``equivalente digital a dinheiro'' \cite{papadopoulos2024blockchain}. De todo modo, essas
+definições são aplicadas às criptomoedas que são convertidas para moedas oficiais utilizando
 mercados digitais e sites de câmbio. De todo modo, moedas digitais não podem ser
 consideradas dinheiro sob o olhar clássico \cite{papadopoulos2024blockchain}.
 
@@ -309,7 +317,7 @@ baseados em fidúcia, criando um sistema \textit{peer-to-peer} (ponto a ponto) b
 criptográficas (usando de chaves públicas e privadas), assim permitindo que duas partes
 efetuem pagamentos sem a necessidade de uma terceira entidade de confiança, formando
 assim o ponto a ponto. Em seu trabalho \citeonline{nakamoto2008bitcoin} propõe que nós da rede atuem
-como validadores das transições realizadas dentro do sistema.
+como validadores das transações realizadas dentro do sistema.
 As transações são definidas como um encadeamento de assinaturas digitais, como
 podemos observar na Figura \ref{fig:bitcoin_transacao}. Para realizar uma transferência o proprietário remetente
 transfere o valor assinando o \textit{hash} da transação anterior e a chave pública do proprietário
@@ -324,7 +332,7 @@ destinatário, adicionando ambos ao final da transação.
 \end{figure}
 
 Em seu trabalho \citeonline{nakamoto2008bitcoin} descreve que as transações realizadas no sistema são publicamente anunciadas e a validade das
-transações se baseiam em um mecanismo de consenso baseado em poder computacional
+transações se baseia em um mecanismo de consenso baseado em poder computacional
 (Proof-of-Work). Se a maioria do poder computacional da rede validar um bloco de
 transações, então este bloco é adicionado ao histórico da rede através de um sistema
 de validação temporal (timestamp) diferente de outros sistemas que dependem de uma
@@ -354,15 +362,15 @@ para compor a função \textit{hash} do próximo bloco.
 \end{figure}
 
 \subsubsection{Proof-of-Work}
-Para implementar um serviço timestamp como descrito anteriormente outro sistema \textit{Proof-of-Work} (Prova de trablho). As provas de trabalho envolvem aplicar uma 
-função hash para um bloco  e verificar se esse hash começa com uma quantidade específicas de zeros. Para chegar em um hash que respeite essa condição é adicionado
+Para implementar um serviço timestamp como descrito anteriormente, é utilizado outro sistema, o \textit{Proof-of-Work} (Prova de trabalho). As provas de trabalho envolvem aplicar uma
+função hash a um bloco e verificar se esse hash começa com uma quantidade específica de zeros. Para chegar em um hash que respeite essa condição é adicionado
 ao bloco um número que é utilizado apenas uma vez (Nonce) e depois a função hash é aplicada ao bloco, uma vez que o hash não respeite a regra basta escolher outro 
 nonce e aplicar a função hash novamente até que o hash respeite a regra imposta \cite{nakamoto2008bitcoin}. 
 
-Essa prova de trabalho é essencialmente um modelo de um voto por CPU. O incentivo para que nós participem da prova de trabalho é que os particimantes são recompensdos, 
+Essa prova de trabalho é essencialmente um modelo de um voto por CPU. O incentivo para que os nós participem da prova de trabalho é que os participantes são recompensados,
 o primeiro nó a conseguir achar o hash para o bloco receberá moedas criadas recentemente \cite{CHUEN}.
 
-Podemos obeservar na \autoref{fig:blockchain} o funcioamento do encadeamento dos blocos.
+Podemos observar na \autoref{fig:blockchain} o funcionamento do encadeamento dos blocos.
 
 \begin{figure}[H]
     \centering
@@ -377,23 +385,23 @@ Os passos de funcionamento da rede são:
 
 \begin{enumerate}
     \item Novas transações são transmitidas a todos os nós.
-    \item Cada nó coleta as novas transações e geram um bloco.
+    \item Cada nó coleta as novas transações e gera um bloco.
     \item Cada nó tenta encontrar a prova de dificuldade para seu bloco.
     \item Quando um nó encontra a prova de dificuldade ele transmite a prova para toda a rede.
     \item Os nós da rede aceitam o bloco transmitido apenas se todas as transações são válidas e não foram gastas anteriormente.
-    \item Os nós expressam o conseso de aprovação para o bloco usando o bloco para criar o próximo bloco da cadeia, usando o hash do bloco aceito.
+    \item Os nós expressam o consenso de aprovação para o bloco usando o para criar o próximo bloco da cadeia, usando o hash do bloco aceito.
 \end{enumerate}
 
 \subsection{Macroeconomia e Bitcoin}
 Conforme demonstrado por \citeonline{BENOMRANE2025}, análises baseadas em retornos diários mostram-se inadequadas para a avaliação de eventos macroeconômicos em 
 criptoativos. Uma vez que os choques gerados por indicadores de inflação são incorporados nos preços de forma quase instantânea, o recurso a uma frequência diária 
-resultaria no mascaramento dessas reações intradiárias. Portanto para analisar melhor a volatilidade do Bitcoin, serão usdas janelas de fechamento de 5 minutos,
+resultaria no mascaramento dessas reações intradiárias. Portanto, para analisar melhor a volatilidade do Bitcoin, serão usadas janelas de fechamento de 5 minutos,
 como demonstrado por \citeonline{GONZALEZ2025}, o intervalo de 5 minutos possui os resultados mais acurados, intervalos de granularidade mais fina possuem muito ruído o que pode gerar
 distorção na volatilidade e nos resultados do estudo.
 
 \subsection{Séries temporais financeiras}
 
-Uma série temporal é qualquer conjunto de observações ordenadas no tempo \cite{morettin2018analise}. Frequentemente, uma série temporal discreta é obtida pela amostragem de uma série contínua em intervalos de tempo iguais. É importante notar que aquilo que se denomina série temporal corresponde, na realidade, a apenas uma das muitas trajetórias possíveis que poderiam ter sido observadas a partir de um determinado processo, fenômeno ou evento \cite{morettin2018analise}. A série de retornos do Bitcoin configura uma série univariável e unidimensional,isto é, dado o parâmetro tempo $t$, obtém-se o retorno do ativo no instante correspondente, e sua série descrita sobe intervalos de tempo constante configuram uma série temporal discreta.
+Uma série temporal é qualquer conjunto de observações ordenadas no tempo \cite{morettin2018analise}. Frequentemente, uma série temporal discreta é obtida pela amostragem de uma série contínua em intervalos de tempo iguais. É importante notar que aquilo que se denomina série temporal corresponde, na realidade, a apenas uma das muitas trajetórias possíveis que poderiam ter sido observadas a partir de um determinado processo, fenômeno ou evento \cite{morettin2018analise}. A série de retornos do Bitcoin configura uma série univariável e unidimensional, isto é, dado o parâmetro tempo $t$, obtém-se o retorno do ativo no instante correspondente, e sua série descrita sob intervalos de tempo constante configura uma série temporal discreta.
 
 Segundo \citeonline{morettin2018analise}, a análise de séries temporais pode ser utilizada para alcançar diferentes objetivos, entre os quais se destacam
 
@@ -411,26 +419,26 @@ Em diversas áreas do conhecimento como engenharia, ciências exatas e ciências
     \item prever a série $Z(t)$ a partir das observações de $X(t)$
     \item Estudar o comportamento do sistema simulando a série de entrada $X(t)$
     \item controlar a série de saída $Z(t)$ por meio do ajuste conveniente da série de entrada $X(t)$
-\end{itemize}
+\end{itemize} 
 
-Os problemas que podem ser resolvidos através da análise de séries temporais são particularmente interessantes para a realização deste trabalho, a análise e entendimento completo da série temporal do Bitcoin e suas propriedades são fundamentais para a modelagem de modelos que realizem a previsão de comportamentos futuros .
+Os problemas que podem ser resolvidos através da análise de séries temporais são particularmente interessantes para a realização deste trabalho, a análise e entendimento completo da série temporal do Bitcoin e suas propriedades são fundamentais para a modelagem de modelos que realizem a previsão de comportamentos futuros.
 
-\subsubsection{propriedades de séries temporais financeiras}
+\subsubsection{Propriedades de séries temporais financeiras}
 
-As séries financeiras, embora compartilhem da estrutura geral descrita acima, possuem propriedades particulares que as distinguem de outras séries temporais. Em geral, não se trabalha com a série de preços, mas com a série de retornos, por razões tanto estatísticas quanto econômicas. Uma das transformações mais empregadas é o retorno logarítmico, também denominado retorno composto continuo, definido como
+As séries financeiras, embora compartilhem da estrutura geral descrita acima, possuem propriedades particulares que as distinguem de outras séries temporais. Em geral, não se trabalha com a série de preços, mas com a série de retornos, por razões tanto estatísticas quanto econômicas. Uma das transformações mais empregadas é o retorno logarítmico, também denominado retorno composto contínuo, definido como
 
 \begin{equation}
     r_t = \log\!\left(\frac{P_t}{P_{t-1}}\right) = p_t - p_{t-1} = \Delta \log(P_t),
     \label{retorno_logaritmico}
 \end{equation}
 
-em que $P_t$ é o preço do ativo no instante $t$ e $p_t = \ln(P_t)$ denota o logaritmo natural do preço nesse mesmo instante \cite{morettin2018analise}. A passagem para os retornos logarítmicos confere à série propriedades convenientes para a modelagem, tais como a aditividade temporal e a estabilização da variância, por exemplo, se caso um ativo possua uma queda de $25\%$ seguido eu uma crescente de $25\%$ o valor do ativo ira permanecer inalterado.
+em que $P_t$ é o preço do ativo no instante $t$ e $p_t = \ln(P_t)$ denota o logaritmo natural do preço nesse mesmo instante \cite{morettin2018analise}. A passagem para os retornos logarítmicos confere à série propriedades convenientes para a modelagem, tais como a aditividade temporal e a estabilização da variância. Por exemplo, caso um ativo sofra uma queda de $25\%$ seguida de uma alta de $25\%$, o valor do ativo irá permanecer inalterado.
 
 \subsubsection{Estacionariedade e autocorrelação}
 
-Uma das suposições mais recorrentes na análise de séries temporais é a de estacionariedade, segundo a qual a série se desenvolve aleatoriamente no tempo em torno de uma média constante, refletindo um comportamento de equilíbrio e constância. Na prática, as séries temporais não costumam apresentar algum tipo de estacionaridade no seu comportamento. As séries financeiras, em particular, costumam exibir tendências fases de alta, de baixa e de lateralização, o que afasta propriedade de estacionariedade quando se trabalha diretamente com a série de preços \cite{morettin2018analise}.
+Uma das suposições mais recorrentes na análise de séries temporais é a de estacionariedade, segundo a qual a série se desenvolve aleatoriamente no tempo em torno de uma média constante, refletindo um comportamento de equilíbrio e constância. Na prática, as séries temporais não costumam apresentar algum tipo de estacionariedade no seu comportamento. As séries financeiras, em particular, costumam exibir tendências, fases de alta, de baixa e de lateralização, o que afasta a propriedade de estacionariedade quando se trabalha diretamente com a série de preços \cite{morettin2018analise}.
 
-É justamente esse comportamento que motiva a transformação dos preços em retornos, ao utilizar a diferença de logaritmos se busca uma série mais próxima da estacionariedade, condição que é necessária por grande parte das técnicas de modelagem de sistemas de previsão. Em relação a autocorrelação, os retornos financeiros apresentam um padrão peculiar, sendo, em geral, não autocorrelacionados de maneira linear \cite{morettin2018analise}, o que na prática significa que os retornos passados não servem para realizar as previsões na série de maneira linear.
+É justamente esse comportamento que motiva a transformação dos preços em retornos, ao utilizar a diferença de logaritmos se busca uma série mais próxima da estacionariedade, condição que é necessária para grande parte das técnicas de modelagem de sistemas de previsão. Em relação à autocorrelação, os retornos financeiros apresentam um padrão peculiar, sendo, em geral, não autocorrelacionados de maneira linear \cite{morettin2018analise}, o que na prática significa que os retornos passados não servem para realizar as previsões na série de maneira linear.
 
 \subsubsection{Fatos estilizados dos Retornos financeiros}
 
@@ -440,10 +448,6 @@ Os retornos financeiros apresentam características peculiares que não se obser
     \item as séries de retornos apresentam agrupamentos de volatilidade ao longo do tempo, de modo que períodos de alta variabilidade tendem a ser seguidos por períodos igualmente voláteis, e vice-versa;
     \item a distribuição dos retornos apresenta caudas mais pesadas do que a distribuição normal e, embora aproximadamente simétrica, é em geral leptocúrtica;
 \end{enumerate}
-
-\subsubsection{Hipótese dos Mercados Eficientes e a discussão sobre eficiência do Bitcoin}
-
-\subsubsection{Memória de longo alcance e dependência temporal em criptoativos}
 
 \subsection{Processos estocásticos e Cadeias de Markov}
 \label{sec:processos_estocasticos}
@@ -457,7 +461,7 @@ O conceito de evento elementar é a noção primitiva na formulação axiomátic
 previamente o que constitui o resultado mais básico e indivisível do experimento, formando assim o universo de possibilidades, que é denominado conjunto de 
 eventos elementares e denotado por $E$ \cite{FISZ}.
 
-Para ilustrar \citeonline{FISZ}, fornece o exemplo do lançamento de um dado de seis faces. Pode-se denotar a ocorrência de uma face específica i 
+Para ilustrar, \citeonline{FISZ} fornece o exemplo do lançamento de um dado de seis faces. Pode-se denotar a ocorrência de uma face específica i 
 (onde $1 \leq i \leq 6$) com a notação $e_i$. Nesse cenário, cada resultado individual do dado é um evento elementar, tal que $e_i \in E$.
 
 A partir da estrutura de $E$, estabelece-se um conjunto $Z$ formado por subconjuntos de eventos elementares de $E$. Esse conjunto $Z$ é denominado campo de Borel, 
@@ -486,7 +490,7 @@ Definimos que a probabilidade de a variável aleatória $X$ assumir um valor den
     P(X \in I) = P(A)
 \end{equation} \cite{FISZ}
 
-Um exemplo mais prático de variáveis a aleatórias demonstrado por \citeonline{ROSS}, onde soma-se o resultado do lançamento de dois dados: 
+Um exemplo mais prático de variáveis aleatórias é demonstrado por \citeonline{ROSS}, no qual se soma o resultado do lançamento de dois dados:
 
 \begin{align*}
     P(X = 2)  &= P(\{(1,1)\}) = \frac{1}{36} \\
@@ -594,7 +598,7 @@ Para compreender a aplicação prática do HMM, é necessário detalhar a relaç
 e os estados ocultos que o sistema infere de maneira indireta.
 \subsubsection{Estados Ocultos e Observáveis}
 
-Em um HMM, o modelo é categorizada em dois conjuntos fundamentais,
+Em um HMM, o modelo é categorizado em dois conjuntos fundamentais,
 os estados ocultos e as observações (ou estados observáveis). Os estados observáveis correspondem aos dados empíricos extraídos de maneira 
 direta da série temporal, refletindo as medições quantificáveis da realidade. Em contrapartida, os estados ocultos representam a dinâmica 
 interna e estocástica do sistema. Embora sejam invisíveis ao observador externo, esses estados ocultos governam o comportamento do 
@@ -617,7 +621,7 @@ de observações $O$.
 
 Nós sabemos que a cor da bola sorteada é influenciada de maneira indireta pela urna da qual ela foi retirada (Urna 1, Urna 2, \dots, Urna $N$). Como a urna escolhida a cada passo não é registrada diretamente na nossa sequência de observações (nós enxergamos apenas as cores das bolas sorteadas), essas urnas representam os estados ocultos do nosso sistema, sendo as responsáveis por emitir as probabilidades de observarmos cada cor (representadas pelas funções de emissão $P(COR) = b_n(m)$).
 
-Compreendido a dinamica intuitiva dos estados, a proxima etapa se consiste em formalizar os componentes principais que
+Compreendida a dinâmica intuitiva dos estados, a próxima etapa consiste em formalizar os componentes principais que
 definem um HMM.
 
 \subsubsection{Componentes do modelo HMM}
@@ -681,7 +685,7 @@ solucionar três problemas fundamentais, que se apresentam da seguinte forma:
     modelo $\lambda = (A, B, \pi)$, como calculamos eficientemente $P(O|\lambda)$, isto é, a probabilidade
     de ocorrência da sequência de observações dado o modelo? \cite{Rabiner1989}
 
-    O primeiro problema apresenta-se como um problema de avaliação, aonde dada uma sequência de observações, como 
+    O primeiro problema apresenta-se como um problema de avaliação, no qual, dada uma sequência de observações, como
     calcular a probabilidade de ela ter sido produzida pelo modelo? Esse problema também pode ser analisado pela 
     perspectiva de seleção de modelos, em que se avaliam diferentes modelos com o objetivo de 
     identificar qual obtém a maior probabilidade de ter gerado as observações fornecidas.
@@ -754,16 +758,16 @@ Onde os fatores da multiplicação são:
 
 \paragraph{Algoritmo de Viterbi}
 
-O algoritmo de Viterbi e resposavel por solucionanar o problema de Decodificação de HMMs,
-o algoritmo nos da a sequencia de estados ocultos que maximizam as probabilidades de termos uma sequencia de observacoes $O$
+O algoritmo de Viterbi é responsável por solucionar o problema de Decodificação de HMMs.
+O algoritmo nos dá a sequência de estados ocultos que maximizam as probabilidades de termos uma sequência de observações $O$.
 
-Tentar encontrar a melhor sequência calculando a probabilidade de todas as combinações possíveis de estados ocultos 
+Tentar encontrar a melhor sequência calculando a probabilidade de todas as combinações possíveis de estados ocultos
 (por exemplo, executando o algoritmo \textit{Forward} para cada combinação) exigiria um esforço computacional inviável, 
 com um número exponencial de caminhos. Para contornar essa limitação, o algoritmo de Viterbi, de maneira similar 
-ao \textit{Forward}, também é um algoritmo programação dinâmica \cite{jm3}, porem, a 
+ao \textit{Forward}, também é um algoritmo de programação dinâmica \cite{jm3}, porém, a
 principal diferença reside no fato de que o algoritmo de Viterbi seleciona apenas o caminho de probabilidade 
 máxima em cada etapa. Cada célula, denotada por $v_t(j)$, representa a probabilidade de o modelo estar no estado $j$ 
-no instante $t$, tendo percorrido a sequência de estados mais provável até aquele momento \cite{jm3}, $v_t(j)$ e representado da 
+no instante $t$, tendo percorrido a sequência de estados mais provável até aquele momento \cite{jm3}, $v_t(j)$ é representado da
 seguinte maneira:
 
 \begin{equation}
@@ -771,7 +775,7 @@ seguinte maneira:
     \label{probabilidade_viterbi}
 \end{equation}
 
-A probabilidade de Viterbi para um estado $j$ no instante atual $t$ é obtida extraindo a maior extensão  possível dos caminhos anteriores: \cite{jm3}
+A probabilidade de Viterbi para um estado $j$ no instante atual $t$ é obtida extraindo a maior extensão possível dos caminhos anteriores: \cite{jm3}
 
 \begin{equation}
     v_t(j) = \max_{i=1}^{N} v_{t-1}(i) a_{ij} b_j(o_t)
@@ -790,7 +794,7 @@ Os três fatores responsáveis por estender o caminho e calcular a probabilidade
 
 O algoritmo de Baum-Welch é utilizado para a resolução do problema de aprendizado inerente aos HMMs.
 Este problema consiste em estimar os parâmetros do modelo $\lambda$, ou seja, as matrizes de transição dos estados ocultos ($A$) e das probabilidades
-de emissão ($B$), dado uma sequência de observações $O$ e uma sequência de potenciais estados ocultos $Q$.
+de emissão ($B$), dada uma sequência de observações $O$ e uma sequência de potenciais estados ocultos $Q$.
 
 O método é um caso especial do algoritmo de Maximização da Expectativa (do inglês \textit{Expectation-Maximization} ou EM). Se trata de um algoritmo 
 iterativo que calcula uma estimativa inicial para as probabilidades, em seguida, utiliza essas estimativas para derivar probabilidades cada vez 
@@ -836,9 +840,9 @@ sequência de observações fornecida no treinamento \cite{jm3}.
 
 \subsubsection{Aplicações de HMM em mercados financeiros e detecção de regimes}
 
-Dado o funcionamento e caracteristicas dos modelos preditivos que iremos utilizar para alcancar os objetivos do trabalho,
-é de fundamental importancia entender como iremos tratar os dados de retorno da serie temporal do Bitcoin para a realização do treinamento
-dos modelos. A proxima seção é dedicada a como iremos tratar e preparar os dados para estes modelos.
+Dado o funcionamento e as características dos modelos preditivos que iremos utilizar para alcançar os objetivos do trabalho,
+é de fundamental importância entender como iremos tratar os dados de retorno da série temporal do Bitcoin para a realização do treinamento
+dos modelos. A próxima seção é dedicada a como iremos tratar e preparar os dados para estes modelos.
 
 \subsection{Discretização e representação simbólica de séries temporais}
 
@@ -847,22 +851,22 @@ dos modelos. A proxima seção é dedicada a como iremos tratar e preparar os da
 A discretização consiste no processo de projetar dados contínuos e sequenciais 
 em um espaço simbólico finito, por meio de padrões probabilísticos concisos que 
 comprimem a informação preservando seu conteúdo essencial \cite{Jha2021_arxiv}. No contexto 
-deste trabalho, essa transformação é mais do que uma escolha metodológica, trata se 
+deste trabalho, essa transformação é mais do que uma escolha metodológica, trata-se
 de um requisito operacional, uma vez que as Cadeias de Markov são definidas sobre um espaço de estados discreto.
 A análise da série de retornos do Bitcoin necessita que cada observação contínua seja 
 mapeada em um símbolo pertencente a um alfabeto finito.
 
 Além da exigência operacional imposta pelo modelo, há uma motivação empírica relevante para a discretização.
-Conforme foi demonstrado por \citeonline{jjfinec}, o comportamento dos ativos do mercado de criptomoedas são fortemente
-contaminados por ruidos de microestrutura e transações. Este ruído compromete a análise continua dos retornos quando análisados
+Conforme foi demonstrado por \citeonline{jjfinec}, o comportamento dos ativos do mercado de criptomoedas é fortemente
+contaminado por ruídos de microestrutura e transações. Este ruído compromete a análise contínua dos retornos quando analisados
 em janelas de alta frequência, podendo ser mitigado através de técnicas de discretização que eliminam pequenas flutuações causadas
-por ruidos.
+por ruídos.
 
 \subsubsection{Estratégia de discretização dos dados}
 \label{discretizacao}
 
-De maneira similar a \citeonline{ARAUJO}. a 
-discretização será aplicada sobre os retornos logarítmicos da série temporal 
+De maneira similar a \citeonline{ARAUJO}, a
+discretização será aplicada sobre os retornos logarítmicos da série temporal
 do Bitcoin \ref{eq:retorno_log} em janelas de cinco minutos. Calcularemos a média e desvio padrão dos retornos 
 normalizados e definiremos a seguinte relação:
 
@@ -875,13 +879,13 @@ normalizados e definiremos a seguinte relação:
     \label{discretizacao}
 \end{equation}
 
-aonde $r(t)$ é o retorno logarítmico no instante, $t$, $\overline{r}$ é média amostral dos retornos da série e $s$ 
-é o desvio padrão amostral. Os símbolos $-1$, $0$ e $1$ representam os movimentos de queda significante, oscilações pouco expressivas em torno da média e movimentos de alta significância, é necessário ressaltar que o trabalho avaliara a sensibilidade dos modelos também a limiares mais estreitos, como $\frac{s}{4}$ e $\frac{s}{5}$, o objetivo é garantir que o estado $0$ represente exclusivamente o ruído branco da microestrutura do mercado, reduzindo o desbalanceamento das classes. A discretização ira ser aplicada separadamente sobre dois conjuntos distintos obtidos através da série dos retornos logarítmicos, conjunto de treinamento e teste, de maneira similar a \citeonline{Nascimento2023}, $95\%$ da série ira ser separado para o treinamento dos modelos de predição e $5\%$ ira ser reservado para o teste.
+onde $r(t)$ é o retorno logarítmico no instante $t$, $\overline{r}$ é a média amostral dos retornos da série e $s$
+é o desvio padrão amostral. Os símbolos $-1$, $0$ e $1$ representam os movimentos de queda significante, oscilações pouco expressivas em torno da média e movimentos de alta significância, é necessário ressaltar que o trabalho avaliará a sensibilidade dos modelos também a limiares mais estreitos, como $\frac{s}{4}$ e $\frac{s}{5}$, o objetivo é garantir que o estado $0$ represente exclusivamente o ruído branco da microestrutura do mercado, reduzindo o desbalanceamento das classes. A discretização será aplicada separadamente sobre dois conjuntos distintos obtidos através da série dos retornos logarítmicos, conjunto de treinamento e teste, de maneira similar a \citeonline{Nascimento2023}, $95\%$ da série será separado para o treinamento dos modelos de predição e $5\%$ será reservado para o teste.
 
 
 \subsubsection{Granularidade e viabilidade estatística}
 
-Conforme conclui \citeonline{NASCIMENTO}, o custo computacional de treinamento de modelos de Cadeia de Markov de ordens superiores e de $O(n^{m+1})$, aonde $n$ representa a granularidade do alfabeto discreto e $m$ a ordem da cadeia de Markov. Para entendermos a magnitude da complexidade da solução, considere um alfabeto de três símbolos. Uma cadeia de ordem $1$ possui $3^2=9$ probabilidades de transição, já uma cadeia de ordem $4$ tera $3^5=243$, e uma cadeia de ordem 6, $3^7=2.187$. Caso o alfabeto seja expandido para cinco símbolos, a mesma ordem 6 exige $5^7=78.125$. O crescimento exponencial como conclui \citeonline{NASCIMENTO} traz limites computacionais que tornam o uso de cadeias de ordens superiores restrita a complexidade do alfabeto simbólico construído e da dimensão do modelo em si. O modelo proposto por \citeonline{RAFTERY1985}, reduz a complexidade para $O(mn^2+m)$, assim tendo uma complexidade linear. Para um modelo de cinco símbolos e cadeia de ordem $6$ teríamos $6\cdot5^2+6=156$, uma redução significativa de probabilidades de transição.
+Conforme conclui \citeonline{NASCIMENTO}, o custo computacional de treinamento de modelos de Cadeia de Markov de ordens superiores é de $O(n^{m+1})$, onde $n$ representa a granularidade do alfabeto discreto e $m$ a ordem da cadeia de Markov. Para entendermos a magnitude da complexidade da solução, considere um alfabeto de três símbolos. Uma cadeia de ordem $1$ possui $3^2=9$ probabilidades de transição, já uma cadeia de ordem $4$ terá $3^5=243$, e uma cadeia de ordem 6, $3^7=2.187$. Caso o alfabeto seja expandido para cinco símbolos, a mesma ordem 6 exige $5^7=78.125$. O crescimento exponencial, como conclui \citeonline{NASCIMENTO}, traz limites computacionais que tornam o uso de cadeias de ordens superiores restrito à complexidade do alfabeto simbólico construído e à dimensão do modelo em si. O modelo proposto por \citeonline{RAFTERY1985}, reduz a complexidade para $O(mn^2+m)$, assim tendo uma complexidade linear. Para um modelo de cinco símbolos e cadeia de ordem $6$ teríamos $6\cdot5^2+6=156$, uma redução significativa de probabilidades de transição.
 
 A adoção do modelo de \citeonline{RAFTERY1985} contorna o crescimento exponencial e torna as cadeias de Markov de ordem superior aplicáveis a cenários dinâmicos. No entanto, em um ambiente real é necessário que o modelo possua real poder preditivo sobre os estados futuros. Dessa forma, para atestar a qualidade das previsões geradas pela cadeia, faz-se necessária a utilização de métricas de validação específicas. A metodologia para realizar essa aferição será discutida no tópico seguinte, que aborda a Avaliação de Modelos Preditivos em Séries Temporais.
 
@@ -959,7 +963,7 @@ Para mitigar esse problema, \citeonline{ARAUJO} adotam a abordagem proposta por 
     \label{fig:grafico_kblocos}
 \end{figure}
 
-Os autores concluem, através da análise de acurácia do modelo para o alfabeto de cinco símbolos, que o algoritmo performa consistentemente melhor em comparação ao modelo de predição aleatório para todas as cripto moedas utilizadas na análise, conforme ilustrado na Figura~\ref{fig:Araujo_cinco_simbolos}. Esse comportamento sugere que o componente de memória de curto prazo se manifesta de maneira robusta e similar no mercado de ativos digitais.
+Os autores concluem, através da análise de acurácia do modelo para o alfabeto de cinco símbolos, que o algoritmo performa consistentemente melhor em comparação ao modelo de predição aleatório para todas as criptomoedas utilizadas na análise, conforme ilustrado na Figura~\ref{fig:Araujo_cinco_simbolos}. Esse comportamento sugere que o componente de memória de curto prazo se manifesta de maneira robusta e similar no mercado de ativos digitais.
 
 \begin{figure}[htbp]
     \centering
@@ -990,7 +994,7 @@ Ao agrupar flutuações pouco expressivas em torno da média, essa estratégia d
     \label{fig:Araujo_tres_simbolos}
 \end{figure}
 
-O presente trabalho utilizará um alfabeto discreto construído de maneira metodologicamente similar ao referencial de três símbolos conforme apresentado na Seção~\ref{sec:discretizacao}. Porem, a análise intradia será realizada para uma escala de alta frequência, utilizando fechamentos em janelas de cinco minutos. 
+O presente trabalho utilizará um alfabeto discreto construído de maneira metodologicamente similar ao referencial de três símbolos conforme apresentado na Seção~\ref{sec:discretizacao}. Porém, a análise intradia será realizada para uma escala de alta frequência, utilizando fechamentos em janelas de cinco minutos.
 
 Para contornar a explosão combinatória e os limites computacionais que restringiram o avanço da ordem preditiva no estudo de \citeonline{ARAUJO}, esta pesquisa empregará a modelagem baseada em Cadeias de Markov de alta ordem proposta por \citeonline{RAFTERY1985}. A adoção deste modelo reduz a complexidade para uma taxa linear, tornando viável a investigação de dependências temporais em ordens substancialmente maiores do que as apresentadas na literatura de referência, sem sacrificar a confiabilidade preditiva do sistema.
 
@@ -1011,14 +1015,14 @@ O presente trabalho também utilizará processos de Markov de alta ordem e tamb�
 \subsection{Trabalho 3: Bitcoin price prediction using machine learning: An approach
 to sample dimension engineering}
 
-O estudo de \citeonline{CHEN} intutulado \textit{Bitcoin price prediction using machine learning: An approach
-to sample dimension engineering} publicado no periódico \textit{journal of Computational and Applied Mathematics}. Possui forte alinhamento com os objetivos deste trabalho. Em seu trabalho \citeonline{CHEN} busca definir os melhores métodos de aprendizado de máquina para predição de preços para o Bitcoin. \citeonline{CHEN} divide a amostra de predição em uma amostra pequena de fechamentos diários e uma amostra maior de fechamento de 5 minutos. Os autores expressão que essa decisão é devido a estrutura diferente dos dados e que ao aplicar modelos de aprendizado de máquina de forma incorreta isso gera um erro nos modelos chamado sobreajuste (\textit{overfitting}). Então os autores empregam modelos estatísticos para o fechamento diário do preço do Bitcoin, enquanto utilizam de métodos de aprendizado de máquina para a amostra de alta frequência, ou seja, fechamentos de cinco minutos. 
+O estudo de \citeonline{CHEN}, intitulado \textit{Bitcoin price prediction using machine learning: An approach
+to sample dimension engineering} e publicado no periódico \textit{Journal of Computational and Applied Mathematics}, possui forte alinhamento com os objetivos deste trabalho. Em seu trabalho \citeonline{CHEN} busca definir os melhores métodos de aprendizado de máquina para predição de preços para o Bitcoin. \citeonline{CHEN} divide a amostra de predição em uma amostra pequena de fechamentos diários e uma amostra maior de fechamento de 5 minutos. Os autores expressam que essa decisão se deve à estrutura diferente dos dados e que aplicar modelos de aprendizado de máquina de forma incorreta gera um erro nos modelos chamado sobreajuste (\textit{overfitting}). Então os autores empregam modelos estatísticos para o fechamento diário do preço do Bitcoin, enquanto utilizam de métodos de aprendizado de máquina para a amostra de alta frequência, ou seja, fechamentos de cinco minutos. 
 
 Além da preocupação com a dimensionalidade da amostra, os autores transformam o desafio preditivo em um problema de classificação binária, focando exclusivamente em prever a direção (mudança de sinal) do preço do ativo. A justificativa é que a predição direcional é mais prática para fundamentar decisões de negociação no mercado financeiro. Por se tratar de um problema de classificação direcional, o desempenho dos modelos foi validado por meio de uma Matriz de Confusão e métricas específicas, como Acurácia, Precisão, Revocação e F1-Score. 
 
-O presente trabalho corrobora a utilidade da janela de cinco minutos para capturar as dinâmicas de alta frequência e adota o foco direcional estabelecido por \citeonline{CHEN}, outro ponto em comum é a utilização de um alfabeto para classificar a série temporal, que no presente trabalho é um alfabeto composto por três símbolos diferindo-se da metodologia de \citeonline{CHEN}, o presente trabalho também utilizará das métricas empregadas pelos autores com finalidade de de validar os modelos empregados. Contudo, diferentemente do uso de algoritmos de aprendizado de máquina em larga escala, esta pesquisa se propõe a modelar o comportamento direcional do Bitcoin utilizando Cadeias de Markov de alta ordem e modelos ocultos de Markov. Essa abordagem estocástica permite extrair a dependência temporal e as regras de transição inerentes aos retornos de cinco minutos de forma clara, reduzindo a complexidade computacional exigida por modelos tradicionais de aprendizado de máquina, ao mesmo tempo em que mantém o rigor na avaliação preditiva através do uso das métricas de classificação adequadas. 
+O presente trabalho corrobora a utilidade da janela de cinco minutos para capturar as dinâmicas de alta frequência e adota o foco direcional estabelecido por \citeonline{CHEN}, outro ponto em comum é a utilização de um alfabeto para classificar a série temporal, que no presente trabalho é um alfabeto composto por três símbolos diferindo-se da metodologia de \citeonline{CHEN}, o presente trabalho também utilizará das métricas empregadas pelos autores com a finalidade de validar os modelos empregados. Contudo, diferentemente do uso de algoritmos de aprendizado de máquina em larga escala, esta pesquisa se propõe a modelar o comportamento direcional do Bitcoin utilizando Cadeias de Markov de alta ordem e modelos ocultos de Markov. Essa abordagem estocástica permite extrair a dependência temporal e as regras de transição inerentes aos retornos de cinco minutos de forma clara, reduzindo a complexidade computacional exigida por modelos tradicionais de aprendizado de máquina, ao mesmo tempo em que mantém o rigor na avaliação preditiva através do uso das métricas de classificação adequadas. 
 
-\subsection{Sintese Comparativa}
+\subsection{Síntese Comparativa}
 
 A análise individual de cada um dos trabalhos relacionados permite compreender com maior clareza o posicionamento desta pesquisa no cenário acadêmico atual, bem como suas diferenças em relação às abordagens comumente adotadas na literatura. A Tabela \ref{tab:tabela_um} sintetiza os principais pontos de divergência entre os trabalhos analisados e as metodologias empregadas por seus respectivos autores.
 
@@ -1028,7 +1032,7 @@ A análise individual de cada um dos trabalhos relacionados permite compreender 
     \small
         \begin{tabularx}{\textwidth}{l X X X X}
         \toprule
-        \textbf{Critério} & \textbf{Áraujo e Barbosa (2024)} & \textbf{Trabalho 2} & \textbf{Trabalho 3} & \textbf{Este trabalho} \\
+        \textbf{Critério} & \textbf{Araújo e Barbosa (2024)} & \textbf{Trabalho 2} & \textbf{Trabalho 3} & \textbf{Este trabalho} \\
         \midrule
         Objetivo & Reconstruir e prever processos de criptoativos e detectar memória de longo alcance & [resumo] & [resumo] & Prever a direção do BTC e identificar a ordem em que a memória se torna estatisticamente relevante \\
         \addlinespace
@@ -1061,7 +1065,7 @@ Sendo o foco estruturar a solução proposta, a seção descreve como deverão s
 a coleta de dados, a modelagem preditiva baseada em Cadeias de Markov de Alta Ordem
 e Modelos Ocultos de Markov, do inglês \textit{Hidden Markov Model} (HMM), e a avaliação de desempenho. Todas as decisões
 tecnológicas e arquiteturais delineadas para a etapa de implementação são fundamentadas
-na revisão bibliográfica discutida no Capítulo \ref{revisao}.
+na revisão bibliográfica discutida no Capítulo \ref{cap:revisao}.
 
 % ---------------------------------------------------------------
 \section{Solução proposta}
@@ -1084,18 +1088,18 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
 
 \begin{itemize}
     \item \textbf{Coleta dos dados fornecidos pela \textit{Binance}}: Os dados serão coletados com o
-    fechamento em janelas de cinco minutos, durante um periodo de 9 anos, obtendo
+    fechamento em janelas de cinco minutos, durante um período de 9 anos, obtendo
     aproximadamente 920 mil registros.
     \item \textbf{Tratamento e discretização dos dados}: Os dados são discretizados utilizando
-    da estratégia apresentada em \ref{discretizacao}, assim obtendo uma nova série temporal de
-    simbolos pertencentes ao alfabeto simbólico, aonde esta ira ser repartida em conjunto
+    a estratégia apresentada em \ref{discretizacao}, assim obtendo uma nova série temporal de
+    símbolos pertencentes ao alfabeto simbólico, a qual será repartida em conjunto
     de treinamento e teste.
     \item \textbf{Treinamento e adequação dos Modelos Preditivos}: O conjunto de treinamento
-    agora já construido ira ser utilizado para o treinamento dos modelos preditivos
-    \item \textbf{Testes Estátisticos, Comparações e Predição}: Os modelos de predição agora
-    já treinados irão realizar as predições encima do conjunto de dados separados para
-    os teste. Os modelos ter sua adequação avaliada através dos métodos estátisticaos
-    descritos na seção \ref.
+    agora já construído será utilizado para o treinamento dos modelos preditivos.
+    \item \textbf{Testes Estatísticos, Comparações e Predição}: Os modelos de predição agora
+    já treinados irão realizar as predições sobre o conjunto de dados separado para
+    os testes. Os modelos terão sua adequação avaliada através dos métodos estatísticos
+    descritos na seção \ref{avaliacao}.
 \end{itemize}
 
 \begin{figure}[htbp]
