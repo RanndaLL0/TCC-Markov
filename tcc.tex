@@ -902,7 +902,7 @@ normalizados e definiremos a seguinte relação:
         -\frac{s}{3} \geq \left( r(t) - \overline{r(t)} \right) \leq \frac{s}{3} &\iff 0 \\
         \left( r(t) - \overline{r(t)} \right) > \frac{s}{3} &\iff 1 \\
     \end{aligned}
-    \label{discretizacao}
+    \label{discretizacao_eq}
 \end{equation}
 
 onde $r(t)$ é o retorno logarítmico no instante $t$, $\overline{r}$ é a média amostral dos retornos da série e $s$
@@ -1058,21 +1058,21 @@ A análise individual de cada um dos trabalhos relacionados permite compreender 
     \small
         \begin{tabularx}{\textwidth}{l X X X X}
         \toprule
-        \textbf{Critério} & \textbf{Araújo e Barbosa (2024)} & \textbf{Trabalho 2} & \textbf{Trabalho 3} & \textbf{Este trabalho} \\
+        \textbf{Critério} & \textbf{Araújo e Barbosa (2024)} & \textbf{Nascimento } & \textbf{Trabalho 3} & \textbf{Este trabalho} \\
         \midrule
-        Objetivo & Reconstruir e prever processos de criptoativos e detectar memória de longo alcance & [resumo] & [resumo] & Prever a direção do BTC e identificar a ordem em que a memória se torna estatisticamente relevante \\
+        Objetivo & Reconstruir e prever processos de criptoativos e detectar memória de longo alcance & O estudo utiliza modelos de Cadeias de Markov (da 1ª à 10ª ordem) e categorização de dados para prever os valores de retornos futuros das quatro principais criptomoedas: Bitcoin, Ethereum, Litecoin e Ripple & O artigo busca prever as mudanças no preço do Bitcoin avaliando diferentes algoritmos de aprendizado de máquina com base na estrutura dos dados e métodos estatísticos & Prever a direção do BTC e identificar a ordem em que a memória se torna estatisticamente relevante \\
         \addlinespace
-        Ativos & BTC, ETH e XRP & [ativos] & [ativos] & BTC \\
+        Ativos & Bitcoin, Ethereum e Ripple & Bitcoin, Ethereum, Ripple, Litecoin & Bitcoin & BTC \\
         \addlinespace
-        Granularidade & Intradiária (1 hora) & [gran.] & [gran.] & Intradiária (5 minutos) \\
+        Granularidade & Intradiária (1 hora) & 0.1, 0.01, 0.001 e 0.0001 & Diária e intradiária (5 minutos) & Intradiária (5 minutos) \\
         \addlinespace
-        Modelagem & Cadeias de Markov de alta ordem (\textit{Less-than-k}) & [modelo] & [modelo] & Cadeias de Markov de alta ordem (MTD/Raftery) e HMM \\
+        Modelagem & Cadeias de Markov de alta ordem (\textit{Less-than-k}) & Cadeia de Markov de Alta Ordem & Regressão logística, Análise Discriminante Linear, XGBoost, Análise Discriminante Quadrática, Máquinas de vetores de suporte e \textit{Long Short-Term Memory} & Cadeias de Markov de alta ordem (MTD/Raftery) e HMM \\
         \addlinespace
-        Discretização & Alfabetos de 5 e 3 símbolos & [discr.] & [discr.] & Alfabeto de 3 símbolos (limiares $s/3$, $s/4$, $s/5$) \\
+        Discretização & Alfabetos de 5 e 3 símbolos & Não é empregado o uso de um alfabeto & Classificação binária & Alfabeto de 3 símbolos (limiares $s/3$, $s/4$, $s/5$) \\
         \addlinespace
-        Validação & Erro médio de predição \textit{vs.} modelo aleatório & [método] & [método] & Acurácia, precisão, \textit{recall}, F1 e matriz de confusão \textit{vs.} \textit{baselines} (aleatório e persistência) \\
+        Validação & Erro médio de predição \textit{vs.} modelo aleatório & Raiz do Erro Quadrático Médio, Erro Absoluto Médio, Erro Percentual Absoluto Médio & Acurácia, precisão, \textit{recall}, \textit{F1-score} & Acurácia, precisão, \textit{recall}, F1 e matriz de confusão \textit{vs.} \textit{baselines} (aleatório e persistência) \\
         \addlinespace
-        Limitação & Explosão combinatória limita a ordem ($k \geq 4$) & [limit.] & [limit.] & --- \\
+        Limitação & Explosão combinatória limita a ordem ($k \geq 4$) & Explosão no consumo de memória limita a análise até a décima ordem & Granularidade e número de dimensões & --- \\
         \bottomrule
         \end{tabularx}
     \par\vspace{2pt}
