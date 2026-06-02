@@ -134,6 +134,28 @@
 % \cleardoublepage
 
 % ---------------------------------------------------------------
+% LISTA DE ABREVIATURAS E SIGLAS
+% ---------------------------------------------------------------
+\pdfbookmark[0]{\listadesiglasname}{loa}
+\begin{siglas}
+  \item[BIC] \emph{Bayesian Information Criterion} (Critério de Informação Bayesiano)
+  \item[BTC] \emph{Bitcoin}
+  \item[EM] \emph{Expectation-Maximization} (Maximização da Expectativa)
+  \item[HMM] \emph{Hidden Markov Model} (Modelo Oculto de Markov)
+  \item[LDA] \emph{Linear Discriminant Analysis} (Análise Discriminante Linear)
+  \item[LSTM] \emph{Long Short-Term Memory}
+  \item[MAE] \emph{Mean Absolute Error} (Erro Médio Absoluto)
+  \item[MAPE] \emph{Mean Absolute Percentage Error} (Erro Percentual Absoluto Médio)
+  \item[ML] \emph{Machine Learning} (Aprendizado de Máquina)
+  \item[MTD] \emph{Mixture Transition Distribution} (Mistura de Distribuições de Transição)
+  \item[QDA] \emph{Quadratic Discriminant Analysis} (Análise Discriminante Quadrática)
+  \item[RMSE] \emph{Root Mean Square Error} (Raiz do Erro Quadrático Médio)
+  \item[SVM] \emph{Support Vector Machine} (Máquina de Vetores de Suporte)
+  \item[XGBoost] \emph{Extreme Gradient Boosting}
+\end{siglas}
+\cleardoublepage
+
+% ---------------------------------------------------------------
 % SUMÁRIO
 % ---------------------------------------------------------------
 \pdfbookmark[0]{\contentsname}{toc}
@@ -278,7 +300,9 @@ que embasam a pesquisa, fornecendo o alicerce para as análises e discussões su
 
 \subsection{Metodologia da pesquisa bibliográfica}
 
-A metodologia para a seleção bibliográfica deste estudo baseou-se em buscas sistemáticas nas bases de dados \textit{ACM Digital Library}, \textit{IEEE Xplore} e \textit{Science Direct}. O processo foi estruturado em duas frentes estratégicas de investigação principais:
+A metodologia para a seleção bibliográfica deste estudo baseou-se em buscas sistemáticas nas 
+bases de dados \textit{ACM Digital Library}, \textit{IEEE Xplore} e \textit{Science Direct}. 
+O processo foi estruturado em duas frentes estratégicas de investigação principais:
 
 \subsubsection{Estratégia 1: Criptomoedas e Fatores Macroeconômicos}
 \begin{description}
@@ -369,7 +393,7 @@ mesma moeda duas vezes, e para isso o sistema conta com um serviço chamado time
 
 \subsubsection{Timestamp}
 
-Para \cite{nakamoto2008bitcoin}, o \textit{timestamp} não é apenas ``data e hora'', mas sim um sistema
+Para \citeonline{nakamoto2008bitcoin}, o \textit{timestamp} não é apenas ``data e hora'', mas sim um sistema
 de validação temporal descentralizado. Esse sistema é responsável por aplicar
 a função \textit{hash} em blocos de transações, \textit{hash} é uma função matemática criptográfica que transforma qualquer conjunto de dados em uma sequência única de caracteres de tamanho
 fixo, sendo único para cada bloco. O serviço depois é responsável por divulgar o \textit{hash} do
@@ -911,7 +935,13 @@ onde $r(t)$ é o retorno logarítmico no instante $t$, $\overline{r}$ é a médi
 
 \subsubsection{Granularidade e viabilidade estatística}
 
-Conforme conclui \citeonline{NASCIMENTO}, o custo computacional de treinamento de modelos de Cadeia de Markov de ordens superiores é de $O(n^{m+1})$, onde $n$ representa a granularidade do alfabeto discreto e $m$ a ordem da cadeia de Markov. Para entendermos a magnitude da complexidade da solução, considere um alfabeto de três símbolos. Uma cadeia de ordem $1$ possui $3^2=9$ probabilidades de transição, já uma cadeia de ordem $4$ terá $3^5=243$, e uma cadeia de ordem 6, $3^7=2.187$. Caso o alfabeto seja expandido para cinco símbolos, a mesma ordem 6 exige $5^7=78.125$. O crescimento exponencial, como conclui \citeonline{NASCIMENTO}, traz limites computacionais que tornam o uso de cadeias de ordens superiores restrito à complexidade do alfabeto simbólico construído e à dimensão do modelo em si. O modelo proposto por \citeonline{RAFTERY1985}, reduz a complexidade para $O(mn^2+m)$, assim tendo uma complexidade linear. Para um modelo de cinco símbolos e cadeia de ordem $6$ teríamos $6\cdot5^2+6=156$, uma redução significativa de probabilidades de transição.
+Conforme conclui \citeonline{NASCIMENTO}, o custo computacional de treinamento de modelos de Cadeia de Markov de ordens superiores é de $O(n^{m+1})$, onde $n$ representa 
+a granularidade do alfabeto discreto e $m$ a ordem da cadeia de Markov. Para entendermos a magnitude da complexidade da solução, considere um alfabeto de 
+três símbolos. Uma cadeia de ordem $1$ possui $3^2=9$ probabilidades de transição, já uma cadeia de ordem $4$ terá $3^5=243$, e uma cadeia de ordem 6, $3^7=2.187$. 
+Caso o alfabeto seja expandido para cinco símbolos, a mesma ordem 6 exige $5^7=78.125$. O crescimento exponencial, como conclui \citeonline{NASCIMENTO}, traz limites computacionais 
+que tornam o uso de cadeias de ordens superiores restrito à complexidade do alfabeto simbólico construído e à dimensão do modelo em si. 
+O modelo proposto por \citeonline{RAFTERY1985}, reduz a complexidade para $O(mn^2+m)$, para um modelo de cinco símbolos e 
+cadeia de ordem $6$ teríamos $6\cdot5^2+6=156$, uma redução significativa de probabilidades de transição.
 
 A adoção do modelo de \citeonline{RAFTERY1985} contorna o crescimento exponencial e torna as cadeias de Markov de ordem superior aplicáveis a cenários dinâmicos. No entanto, em um ambiente real é necessário que o modelo possua real poder preditivo sobre os estados futuros. Dessa forma, para atestar a qualidade das previsões geradas pela cadeia, faz-se necessária a utilização de métricas de validação específicas. A metodologia para realizar essa aferição será discutida no tópico seguinte, que aborda a Avaliação de Modelos Preditivos em Séries Temporais.
 
@@ -995,9 +1025,9 @@ O estudo de \citeonline{NASCIMENTO}, intitulado Extracting Rules via Markov Chai
 
 A principal motivação do estudo é determinar possíveis cenários futuros analisando a dependência de memória na dinâmica do processo, obtendo regras de transição de estados a partir das informações do conjunto de dados. Para isso, os autores constroem um modelo preditivo baseado nos retornos logarítmicos dos preços através da equação $r_t = log(z_t) - log(z_{t-1})$, onde $z_t$ corresponde ao valor observado no dia atual e $z_{t-1}$ ao valor observado no dia anterior.
 
-Para realizar a análise, Nascimento descreve a necessidade de categorizar a série e enfatiza que a granularidade dos dados pode influenciar os resultados. Desse modo, foram testadas quatro granularidades (0.1, 0.01, 0.001 e 0.0001) com a finalidade de discretizar os retornos e encontrar o melhor ajuste para as séries temporais. Essas granularidades representam os intervalos numéricos onde a série será categorizada, sendo o escopo total definido entre o menor e o maior valor da série temporal, subtraindo e somando o valor da respectiva granularidade.
+Para realizar a análise, Nascimento descreve a necessidade de categorizar a série e enfatiza que a granularidade dos dados pode influenciar os resultados. Desse modo, foram testadas quatro granularidades (0,1; 0,01; 0,001 e 0,0001) com a finalidade de discretizar os retornos e encontrar o melhor ajuste para as séries temporais. Essas granularidades representam os intervalos numéricos onde a série será categorizada, sendo o escopo total definido entre o menor e o maior valor da série temporal, subtraindo e somando o valor da respectiva granularidade.
 
-Uma vez que a série temporal é classificada, os autores definem os estados de transição da matriz de forma que o número de estados para cada granularidade seja equivalente ao número total de categorias menos um. Como exemplo, para a série do Bitcoin com granularidade 0.1, o intervalo de categorização obtido foi de [-0.286095194, 0.324052773]. Nesse cenário, foram geradas seis categorias, resultando em cinco possíveis estados para a matriz de transição.
+Uma vez que a série temporal é classificada, os autores definem os estados de transição da matriz de forma que o número de estados para cada granularidade seja equivalente ao número total de categorias menos um. Como exemplo, para a série do Bitcoin com granularidade 0,1, o intervalo de categorização obtido foi de $[-0{,}286095194;\ 0{,}324052773]$. Nesse cenário, foram geradas seis categorias, resultando em cinco possíveis estados para a matriz de transição.
 
 Para validar o modelo, o estudo utilizou três métricas: a Raiz do Erro Quadrático Médio, do inglês \textit{Root Mean Square Error} (RMSE), o Erro Médio Absoluto, do inglês \textit{Mean Absolute Error} (MAE) e o Erro Percentual Absoluto Médio, do inglês \textit{Mean Absolute Percentage Error} (MAPE). O RMSE e o MAE foram utilizados para determinar qual ordem da Cadeia de Markov obteve a melhor acurácia dentro de cada granularidade, enquanto o MAPE auxiliou na escolha da granularidade ideal. Nascimento conclui que, para o Bitcoin, um processo de Markov na sétima ordem produz os melhores resultados, corroborando a hipótese de que as séries temporais de criptomoedas possuem memória de longo alcance.
 
@@ -1103,9 +1133,9 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
 
 \begin{figure}[htbp]
     \centering
-    \caption{Elaborado pelos autores}
+    \caption{Pipeline da solução proposta}
     \includegraphics[width=0.8\textwidth]{images/pipeline.png}
-    \fonte{\cite{ARAUJO}}
+    \fonte{Elaborado pelos autores (2026)}
     \label{fig:pipeline}
 \end{figure}
 
@@ -1173,7 +1203,7 @@ O cronograma apresenta, no formato de diagrama de Gantt, as atividades previstas
     \end{ganttchart}%
     }
     
-    \fonte{Elaborado pelo autor (2026)}
+    \fonte{Elaborado pelos autores (2026)}
 \end{figure}
 
 % ---------------------------------------------------------------
