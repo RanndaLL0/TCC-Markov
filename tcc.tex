@@ -92,6 +92,8 @@
 % ---------------------------------------------------------------
 \usepackage{graphicx}
 \graphicspath{{images/}}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 \begin{document}
 
 % Seleciona o idioma do documento
@@ -331,6 +333,46 @@ Ao final desse processo, foram lidos efetivamente 30 trabalhos que compõem o es
     \item \textbf{7 trabalhos de contexto sobre o mercado do Bitcoin:} Documentos fundacionais (como o \textit{whitepaper} original) e artigos de embasamento sobre finanças descentralizadas, \textit{blockchain} e regulação;
     \item \textbf{3 artigos de exemplo de uso de métodos estatísticos:} Trabalhos que aplicam Modelos Ocultos de Markov (HMM) e métodos análogos em outros domínios práticos (como mercado de ações tradicionais, bioinformática e processamento de linguagem natural) para demonstrar a versatilidade e eficácia do modelo.
 \end{itemize}
+
+Pode-se observar o fluxo descrito acima na \autoref{fig:fluxograma_metodologia}:
+
+\begin{figure}[H]
+    \centering
+    \caption{Fluxograma do processo de seleção e composição bibliográfica.}
+    \label{fig:fluxograma_metodologia}
+    \begin{tikzpicture}[
+        node distance=1.5cm and 2cm,
+        box/.style={rectangle, draw, rounded corners, text width=4.5cm, align=center, minimum height=1.5cm},
+        sidebox/.style={rectangle, draw, dashed, text width=3.5cm, align=center, minimum height=1cm, text=gray!80!black},
+        arrow/.style={thick,->,>=stealth}
+        ]
+
+        \node (boxA) [box] {\textbf{Estratégia 1}\\Bases: ACM, IEEE, Science Direct\\(Cripto, Macro e Alta Frequência)};
+        \node (boxB) [box, right=of boxA, xshift=0.5cm] {\textbf{Estratégia 2}\\Bases: ACM, IEEE, Science Direct\\(Processos Estocásticos e Bitcoin)};
+
+        \node (boxC) [box, below=1.5cm of boxA, xshift=3.5cm] {\textbf{Filtros Preliminares}\\(Remoção de duplicatas e leitura rápida)};
+        \node (exclC) [sidebox, right=of boxC] {Artigos excluídos preliminarmente};
+
+        \node (boxD) [box, below=1.5cm of boxC] {\textbf{Elegibilidade}\\Aplicação dos critérios restritos de inclusão/exclusão no título e resumo};
+        \node (exclD) [sidebox, right=of boxD] {Artigos excluídos por distanciamento do escopo};
+
+        \node (boxE) [box, below=1.5cm of boxD] {\textbf{Busca Sistemática}\\10 artigos alinhados ao escopo selecionados};
+        \node (boxF) [box, left=of boxE] {\textbf{Inclusão \textit{Ad Hoc}}\\+10 Ref. Estatística\\+7 Contexto de Mercado\\+3 Aplicações (HMM)};
+
+        \node (boxG) [box, below=1.5cm of boxE, fill=gray!15, text width=5cm] {\textbf{Acervo Final}\\30 artigos lidos na íntegra e incluídos no estudo};
+
+        \draw [arrow] (boxA) -- (boxC);
+        \draw [arrow] (boxB) -- (boxC);
+        \draw [arrow] (boxC) -- (exclC);
+        \draw [arrow] (boxC) -- (boxD);
+        \draw [arrow] (boxD) -- (exclD);
+        \draw [arrow] (boxD) -- (boxE);
+        \draw [arrow] (boxE) -- (boxG);
+        \draw [arrow] (boxF) |- (boxG);
+
+    \end{tikzpicture}
+    \fonte{Elaborado pelos autores.}
+\end{figure}
 
 % ---------------------------------------------------------------
 \section{Referencial teórico}
