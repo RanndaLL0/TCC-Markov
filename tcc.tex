@@ -1068,6 +1068,14 @@ generalizadas ao atender dois requisitos:
     \item Cada classe deve ser não vazia
 \end{itemize}
 
+É necessário ressaltar que, devido à natureza de alta frequência dos dados, a série de retornos discretizados 
+apresentará um forte desbalanceamento de classes. Como apontado por \citeonline{jjfinec}, a grande maioria das observações está concentrada em movimentos
+estatisticamente irrelevantes ou ruido (0). Por consequência, a Acurácia global e a Taxa de Erro, embora úteis para uma visão geral, 
+podem apresentar valores artificialmente elevados caso o modelo adote um comportamento de persistência focado na classe majoritária. 
+Para mitigar essa armadilha estatística e garantir a utilidade prática do modelo, a avaliação de desempenho priorizará a análise isolada das métricas de 
+\textit{Precisão}, \textit{Recall} e \textit{F1-Score} especificamente para os rótulos de movimentação direcional (1 e -1). 
+O modelo será considerado superior aos baselines apenas se demonstrar vantagem preditiva sobre esses estados significativos.
+
 % ---------------------------------------------------------------
 \section{Trabalhos relacionados}
 \label{sec:trabalhos_relacionados}
@@ -1235,7 +1243,13 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
 \begin{itemize}
     \item \textbf{Coleta dos dados fornecidos pela \textit{Binance}}: Os dados serão coletados com o
     fechamento em janelas de cinco minutos, durante um período de 9 anos, obtendo
-    aproximadamente 920 mil registros.
+    aproximadamente 920 mil registros. Sera aplicado o descarte em possiveis pontos em que exista janelas faltantes
+
+    \item \textbf{Limpeza e Tratamento de Dados Ausentes}: Visando garantir a reprodutibilidade e a integridade estatística da série,
+    utilizaremos de uma etapa de pré processamento. Janelas temporais faltantes (\textit{gaps}) geradas por falhas de registro ou 
+    períodos de manutenção da corretora serão identificadas. Para evitar a geração de retornos logarítmicos errados devido a saltos temporais, 
+    ira ser adotado o descarte das observações no momento da falha. Dessa forma, o cálculo de retorno ocorrerá exclusivamente entre janelas de cinco 
+    minutos consecutivas. Valores discrepantes (\textit{outliers}) decorrentes de anomalias de registro também serão descartados nesta etapa.
 
     \item \textbf{Tratamento e discretização dos dados}: Os dados são discretizados utilizando
     a estratégia apresentada em \ref{discretizacao}, assim obtendo uma nova série temporal de
@@ -1245,7 +1259,7 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
     \item \textbf{Separação dos Dados Históricos}:
     Considerando a evolução estrutural de criptoativos 
     que os fez sair de um nicho tecnológico para um fenômeno financeiro global \cite{MAKAROV2022}, 
-    será realizada a divisão do conjunto de dados em subamostras menores. Como as séries financeiras 
+    será realizada a divisão do conjunto de dados em subamostras. Como as séries financeiras 
     naturalmente apresentam quebras estruturais, alternando entre fases de alta, baixa e 
     lateralização que afastam a propriedade de estacionariedade em  longas janelas de tempo \cite{morettin2018analise}, o intuito 
     dessa divisão é mitigar um possível viés de homogeneidade.
@@ -1253,19 +1267,73 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
     \item \textbf{Treinamento e adequação dos Modelos Preditivos}: O conjunto de treinamento
     agora já construído será utilizado para o treinamento dos modelos preditivos.
 
-    \item \textbf{Testes Estatísticos, Comparações e Predição}: Os modelos de predição agora
-    já treinados irão realizar as predições sobre o conjunto de dados separado para
-    os testes. Os modelos terão sua adequação avaliada através dos métodos estatísticos
-    descritos na seção \ref{avaliacao}.
+    \item \textbf{Testes Estatísticos, Comparações e Predição}: Os modelos de predição agora já treinados irão realizar as predições 
+    sobre o conjunto de dados separado para os testes. A adequação dos modelos será avaliada através dos métodos estatísticos 
+    descritos na seção \ref{avaliacao}. De forma crucial para a validação da hipótese deste estudo, a superação dos modelos empíricos 
+    (aleatório e persistência) não será medida apenas pela taxa de acerto global, mas pela capacidade da 
+    matriz de confusão e do F1-Score em atestar a correta predição das classes (1 e -1), que representam os movimentos direcionais de interesse.
 
 \end{itemize}
 
 \begin{figure}[htbp]
     \centering
     \caption{Pipeline da solução proposta}
-    \includegraphics[width=1\textwidth]{images/pipeline.png}
-    \fonte{Elaborado pelos autores (2026)}
     \label{fig:pipeline}
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        node distance=0.75cm,
+        pbox/.style={
+            rectangle,
+            rounded corners=5pt,
+            draw=black,
+            line width=0.9pt,
+            fill=gray!6,
+            text width=2.5cm,
+            align=center,
+            minimum height=2.2cm,
+            font=\small,
+            inner sep=6pt
+        },
+        pnum/.style={
+            circle,
+            draw=black,
+            fill=white,
+            line width=0.7pt,
+            minimum size=0.55cm,
+            inner sep=0pt,
+            font=\scriptsize\bfseries
+        },
+        arrow/.style={
+            line width=1pt,
+            -{Stealth[length=2.8mm, width=2.2mm]},
+            shorten >=2pt,
+            shorten <=2pt
+        }
+        ]
+
+        \node (p1) [pbox] {Coleta de Dados};
+        \node (p2) [pbox, right=of p1] {Limpeza e Tratamento de Dados Ausentes};
+        \node (p3) [pbox, right=of p2] {Tratamento e Discretização};
+        \node (p4) [pbox, right=of p3] {Separação dos Dados Históricos};
+        \node (p5) [pbox, right=of p4] {Treinamento dos Modelos Preditivos};
+        \node (p6) [pbox, right=of p5] {Testes, Comparação e Predição};
+
+        \node [pnum] at (p1.north west) {1};
+        \node [pnum] at (p2.north west) {2};
+        \node [pnum] at (p3.north west) {3};
+        \node [pnum] at (p4.north west) {4};
+        \node [pnum] at (p5.north west) {5};
+        \node [pnum] at (p6.north west) {6};
+
+        \draw [arrow] (p1) -- (p2);
+        \draw [arrow] (p2) -- (p3);
+        \draw [arrow] (p3) -- (p4);
+        \draw [arrow] (p4) -- (p5);
+        \draw [arrow] (p5) -- (p6);
+
+    \end{tikzpicture}
+    }
+    \fonte{Elaborado pelos autores (2026)}
 \end{figure}
 
 
