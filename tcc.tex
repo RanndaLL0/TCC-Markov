@@ -154,7 +154,7 @@
   \item[XGBoost] \emph{Extreme Gradient Boosting}
 \end{siglas}
 \cleardoublepage
-
+ 
 % ---------------------------------------------------------------
 % SUMÁRIO
 % ---------------------------------------------------------------
@@ -1119,22 +1119,34 @@ F1-\textit{score} e matriz de confusão, conforme discutido na seção \ref{aval
     \item \textbf{Coleta dos dados fornecidos pela \textit{Binance}}: Os dados serão coletados com o
     fechamento em janelas de cinco minutos, durante um período de 9 anos, obtendo
     aproximadamente 920 mil registros.
+
     \item \textbf{Tratamento e discretização dos dados}: Os dados são discretizados utilizando
     a estratégia apresentada em \ref{discretizacao}, assim obtendo uma nova série temporal de
     símbolos pertencentes ao alfabeto simbólico, a qual será repartida em conjunto
     de treinamento e teste.
+
+    \item \textbf{Separação dos Dados Históricos}:
+    Considerando a evolução estrutural de criptoativos 
+    que os fez sair de um nicho tecnológico para um fenômeno financeiro global \cite{MAKAROV2022}, 
+    será realizada a divisão do conjunto de dados em subamostras menores. Como as séries financeiras 
+    naturalmente apresentam quebras estruturais, alternando entre fases de alta, baixa e 
+    lateralização que afastam a propriedade de estacionariedade em  longas janelas de tempo \cite{morettin2018analise}, o intuito 
+    dessa divisão é mitigar um possível viés de homogeneidade.
+
     \item \textbf{Treinamento e adequação dos Modelos Preditivos}: O conjunto de treinamento
     agora já construído será utilizado para o treinamento dos modelos preditivos.
+
     \item \textbf{Testes Estatísticos, Comparações e Predição}: Os modelos de predição agora
     já treinados irão realizar as predições sobre o conjunto de dados separado para
     os testes. Os modelos terão sua adequação avaliada através dos métodos estatísticos
     descritos na seção \ref{avaliacao}.
+
 \end{itemize}
 
 \begin{figure}[htbp]
     \centering
     \caption{Pipeline da solução proposta}
-    \includegraphics[width=0.8\textwidth]{images/pipeline.png}
+    \includegraphics[width=1\textwidth]{images/pipeline.png}
     \fonte{Elaborado pelos autores (2026)}
     \label{fig:pipeline}
 \end{figure}
