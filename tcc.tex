@@ -304,33 +304,39 @@ adotada para selecionar fontes confiáveis e preencher lacunas de conhecimento. 
 do texto, são introduzidas as principais terminologias, propriedades e relações conceituais
 que embasam a pesquisa, fornecendo o alicerce para as análises e discussões subsequentes.
 
-\subsection{Metodologia da pesquisa bibliográfica}
+\section{Metodologia da pesquisa bibliográfica}
 
-A metodologia para a seleção bibliográfica deste estudo baseou-se em buscas sistemáticas nas 
-bases de dados \textit{ACM Digital Library}, \textit{IEEE Xplore} e \textit{Science Direct}. 
-O processo foi estruturado em duas frentes estratégicas de investigação principais:
+A metodologia para a seleção bibliográfica deste estudo baseou-se em buscas sistemáticas nas bases de dados \textit{ACM Digital Library}, \textit{IEEE Xplore} e 
+\textit{Science Direct}. O processo foi estruturado em duas frentes estratégicas de investigação principais:
 
-\subsubsection{Estratégia 1: Criptomoedas e Fatores Macroeconômicos}
+\subsubsection{Estratégia 1: Criptomoedas, Economia e Alta Frequência}
 \begin{description}
-    \item[\textbf{String de busca:}] \texttt{(``Bitcoin'' OR ``cryptocurrency'')} \texttt{AND (``high frequency'' OR} \texttt{``intraday'' OR ``5-minute''} \texttt{OR ``tick data'') AND} \texttt{(``macroeconomic'' OR ``inflation'')}
-    \item[\textbf{Critério de Inclusão:}] Os artigos deveriam citar explicitamente os termos \textit{Bitcoin} ou criptomoedas, em conjunto com economia (ou sinônimos), diretamente no título do trabalho.
+    \item[\textbf{String de busca:}] \texttt{("Bitcoin" OR "cryptocurrency")} \texttt{AND ("high frequency" OR} \texttt{"intraday" OR "5-minute"} \texttt{OR "tick data") AND} \texttt{("macroeconomic" OR "inflation")}
+    \item[\textbf{Critério de Inclusão:}] Os artigos deveriam citar diretamente os termos \textit{Bitcoin} ou criptomoedas em conjunto com economia, alta frequência, \textit{tradings} (ou seus respectivos sinônimos) no título ou no resumo (\textit{abstract}) do trabalho.
     \item[\textbf{Resultados obtidos:}] \textit{ACM} (307); \textit{IEEE} (13 iniciais, 12 após filtros preliminares); \textit{Science Direct} (1.202 iniciais, 1.104 após filtros preliminares).
 \end{description}
 
-\subsubsection{Estratégia 2: Predição com Processos Estocásticos}
+\subsubsection{Estratégia 2: Predição com Processos Estocásticos, Estatística e Métricas de Avalição}
 \begin{description}
-    \item[\textbf{String de busca:}] \texttt{(``Markov chain'' OR ``high-order} \texttt{Markov'' OR ``stochastic process'')} \texttt{AND (``cryptocurrency'' OR} \texttt{``Bitcoin'')}
-    \item[\textbf{Critério de Inclusão:}] O estudo deveria aplicar obrigatoriamente uma cadeia de Markov ou outro processo estocástico/estatístico com a finalidade de predizer o comportamento ou o preço do \textit{Bitcoin}. Exigiu-se a menção ao método (Markov ou processo estatístico) no título ou no resumo (\textit{abstract}), além da citação direta ao termo \textit{Bitcoin}.
+    \item[\textbf{String de busca:}] \texttt{("Markov chain" OR "high-order} \texttt{Markov" OR "stochastic process")} \texttt{AND ("cryptocurrency" OR} \texttt{"Bitcoin")}
+    \item[\textbf{Critério de Inclusão:}] O artigo deveria aplicar obrigatoriamente um processo de Markov, ou outro processo estatístico, com a finalidade de predizer o comportamento ou o preço do \textit{Bitcoin}. Exigiu-se a menção ao método de Markov ou processo estatístico no título ou no resumo (\textit{abstract}), além da citação direta ao termo \textit{Bitcoin}.
     \item[\textbf{Resultados obtidos:}] \textit{ACM} (403); \textit{Science Direct} (799 iniciais, 657 após filtros preliminares); \textit{IEEE} (124 iniciais, 84 após filtros preliminares).
 \end{description}
 
 \subsubsection{Triagem Final e Composição do Acervo}
-Após a coleta inicial, realizou-se uma filtragem rigorosa para descartar os artigos que apresentavam um distanciamento temático ou conceitual do objetivo central da 
-pesquisa. 
+Após a aplicação rigorosa dos critérios de inclusão e exclusão, obteve-se um subconjunto de 10 artigos altamente alinhados ao escopo oriundos diretamente das strings de 
+busca.
 
-Com o intuito de preencher lacunas de conhecimento e consolidar uma base teórica robusta, o acervo selecionado foi complementado por meio da inserção manual de 
-referências seminais, livros e artigos clássicos da literatura da área. Ao final de todo o processo de triagem, refinamento e complementação, obteve-se um total de 3
-0 artigos lidos efetivamente na íntegra, os quais compõem o escopo de análise deste estudo.
+Com o intuito de preencher lacunas de conhecimento não cobertas pelas buscas estruturadas e consolidar a fundamentação teórica, a bibliografia foi complementada de 
+forma \textit{ad hoc}. Foram adicionados livros de referência estatística, referências seminais, documentos de contexto de mercado e artigos ilustrativos de outras áreas. 
+
+Ao final desse processo, foram lidos efetivamente 30 trabalhos que compõem o estudo, distribuídos na seguinte proporção:
+\begin{itemize}
+    \item \textbf{10 artigos de revisão sistemática:} Trabalhos que cruzam modelos preditivos, dinâmica de alta frequência e mercado de criptomoedas, extraídos diretamente das bases de dados;
+    \item \textbf{10 referências seminais e de base estatística:} Livros e artigos clássicos fundamentais para o embasamento matemático de processos estocásticos, teoria das probabilidades e Cadeias de Markov;
+    \item \textbf{7 trabalhos de contexto sobre o mercado do Bitcoin:} Documentos fundacionais (como o \textit{whitepaper} original) e artigos de embasamento sobre finanças descentralizadas, \textit{blockchain} e regulação;
+    \item \textbf{3 artigos de exemplo de uso de métodos estatísticos:} Trabalhos que aplicam Modelos Ocultos de Markov (HMM) e métodos análogos em outros domínios práticos (como mercado de ações tradicionais, bioinformática e processamento de linguagem natural) para demonstrar a versatilidade e eficácia do modelo.
+\end{itemize}
 
 Pode-se observar o fluxo descrito acima na \autoref{fig:fluxograma_metodologia}:
 
@@ -355,7 +361,7 @@ Pode-se observar o fluxo descrito acima na \autoref{fig:fluxograma_metodologia}:
         \node (exclD) [sidebox, right=of boxD] {Artigos excluídos por distanciamento do escopo};
 
         \node (boxE) [box, below=1.5cm of boxD] {\textbf{Busca Sistemática}\\10 artigos alinhados ao escopo selecionados};
-        \node (boxF) [box, left=of boxE] {\textbf{Inclusão \textit{Ad Hoc}}\\+10 Ref. Estatística\\+7 Contexto de Mercado\\+3 Aplicações (HMM)};
+        \node (boxF) [box, left=0.5cm of boxE] {\textbf{Inclusão \textit{Ad Hoc}}\\+10 Ref. Estatística\\+7 Contexto de Mercado\\+3 Aplicações (HMM)};
 
         \node (boxG) [box, below=1.5cm of boxE, fill=gray!15, text width=5cm] {\textbf{Acervo Final}\\30 artigos lidos na íntegra e incluídos no estudo};
 
@@ -996,9 +1002,71 @@ O modelo proposto por \citeonline{RAFTERY1985}, reduz a complexidade para $O(n^2
 cadeia de ordem $6$ teríamos $\cdot5^2+6=31$, uma redução significativa de probabilidades de transição.
 
 A adoção do modelo de \citeonline{RAFTERY1985} contorna o crescimento exponencial e torna as cadeias de Markov de ordem superior aplicáveis a cenários dinâmicos. No entanto, em um ambiente real é necessário que o modelo possua real poder preditivo sobre os estados futuros. Dessa forma, para atestar a qualidade das previsões geradas pela cadeia, faz-se necessária a utilização de métricas de validação específicas. A metodologia para realizar essa aferição será discutida no tópico seguinte, que aborda a Avaliação de Modelos Preditivos em Séries Temporais.
-
+ 
 \subsection{Avaliação de modelos preditivos em séries temporais}
 \label{avaliacao}
+
+Os métodos de avaliação para modelos preditivos de classificação se diferem de métodos para avaliação de modelos preditivos de regressão, uma vez que o resultado da 
+predição não é mais um valor quantitativo e sim qualitativo. Uma das formas de poder medir a acurácia de um modelo de classificação é dada pela sua taxa de erro 
+(\textit{error rate}), uma métrica que avalia a proporção de classificações incorretas do sistema. A taxa de erro do modelo é descrita como:
+
+\begin{equation}
+    \frac{1}{n}\sum_{i=1}^{n} I(y_i \neq \hat{y}_i)
+\end{equation}
+
+Onde $\hat{y}_i$ é a classificação prevista para a $i$-ésima observação usando o modelo preditivo. Já $I(y_i \neq \hat{y}_i)$ é uma variável indicadora, que assume o 
+valor 1 se $y_i \neq \hat{y}_i$, indicando que a observação foi classificada incorretamente, e 0 se $y_i = \hat{y}_i$, indicando classificação correta. \cite{JAMES2021}
+
+No contexto de um modelo de classificação binária onde por convenção os rótulos são positivos (+) e negativos (-) é comum empregar uma tabela de quatro células que 
+sumariza as classificações do modelo em quatro rótulos, essa tabela é preenchida com a contagem de vezes que uma predição é associada a um rótulo, sendo os rótulos 
+Verdadeiros e Falsos positivos referem-se o número de predições positivas corretas e incorretas, e de forma similar os rótulos Verdadeiros e Falsos negativos. As 
+células podem ser expressadas como constantes do Alfabeto. \cite{POWERS2020}. Observe a \autoref{fig:Matriz_de_confusao} para visualizar a convenção de nomes adotada 
+nos trechos seguintes, usaremos notação \textit{True Positive} (\textit{TP}) e \textit{True Negative} (\textit{TN}) para verdadeiros positivos e negativos, e também 
+\textit{False Positive} (\textit{FP}) e \textit{False Negative} (\textit{FN}) para expressar os rótulos e para expressar as células as constantes A, B, C e D. 
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Tabela de rótulos}
+    \includegraphics[width=0.8\textwidth]{Matriz_de_confusao.png}
+    \fonte{\cite{POWERS2020}}
+    \label{fig:Matriz_de_confusao}
+\end{figure}
+
+\subsubsection{\textit{Recall}}
+Essa métrica relaciona a quantidade de verdadeiros positivos e falsos positivos do modelo e será referenciada como \textit{True Positive Rate} (\textit{tpr}), e é 
+descrita como: 
+
+\begin{equation}
+    Recall = Sensitivity = tpr = tp/tr
+           = TP / RP = A / (A + C)
+\end{equation}
+
+\subsubsection{Precisão}
+Precisão denota a proporção de casos preditos positivos que foram preditos corretamente. Pode ser chamado também de Acurácia de verdadeiros positivos 
+(\textit{True Positive Accuracy - TPA}). Precisão é defina por:
+
+\begin{equation}
+    Precision = Confidence = tpa = tp / pp
+              = TP / PP = A / (A + B)
+\end{equation}
+
+\subsubsection{\textit{F1-Score}}
+A medida F1 efetivamente relaciona a proporção de Verdadeiros Positivos (\textit{True Positives}) à média aritmética das previsões positivas (\textit{Predicted Positives}) 
+e dos casos reais positivos (\textit{Real Positives}), é descrita como: 
+
+\begin{equation}
+    F1 = tp / (tp + (fn + fp) / 2)
+       = A / (A + (B + C) / 2)
+\end{equation}
+
+\subsubsection{Generalização}
+Apesar de inicialmente as métricas serem definidas para um modelo de classificação binária em seu trabalho \citeonline{POWERS2020}conclue que essas relações podem ser 
+generalizadas ao atender dois requisitos: 
+
+\begin{itemize}
+    \item Classes reais e classes previstas são categorizadas por $K$ rótulos
+    \item Cada classe deve ser não vazia
+\end{itemize}
 
 % ---------------------------------------------------------------
 \section{Trabalhos relacionados}
