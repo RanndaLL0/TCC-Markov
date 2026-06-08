@@ -649,8 +649,12 @@ estado (incluindo a possibilidade de permanecer no mesmo estado atual), os eleme
 \end{equation*}
 
 \subsection{Cadeias de Markov de alta Ordem}
-Em seu estudo \cite{URQUHART} conclui que os retornos do Bitcoin possuem indícios de comportamento aleatório, porém na literatura mais recente \cite{NASCIMENTO} não só revela evidências de que a série do Bitcoin possui memória como determinam a magnitude dessa memória usando modelos estatísticos. Um modelo de cadeias de Markov de Alta ordem é apresentado por \citeonline{RAFTERY1985} como uma alternativa aos modelos convencionais que possuem o número de parâmetros independentes descritos por:
-$m^l(m - 1)$, onde $m$ é o número de estados e $l$ a ordem da cadeia de markov, o modelo introduzido por \citeonline{RAFTERY1985} foi posteriormente chamado de Mistura de Distribuições de Transição, do inglês \textit{Mixture Transition Distribution} (MTD), e utiliza de $m(m -1) + (l - 1)$ parâmetros independentes e é descrito por:
+Em seu estudo \cite{URQUHART} conclui que os retornos do Bitcoin possuem indícios de comportamento aleatório, porém na literatura mais recente \cite{NASCIMENTO} não só revela 
+evidências de que a série do Bitcoin possui memória como determinam a magnitude dessa memória usando modelos estatísticos. Um modelo de cadeias de Markov de Alta ordem é 
+apresentado por \citeonline{RAFTERY1985} como uma alternativa aos modelos convencionais que possuem o número de parâmetros independentes descritos por:
+
+$m^l(m - 1)$, onde $m$ é o número de estados e $l$ a ordem da cadeia de markov, o modelo introduzido por \citeonline{RAFTERY1985} foi posteriormente chamado de Mistura de 
+Distribuições de Transição, do inglês \textit{Mixture Transition Distribution} (MTD), e utiliza de $m(m -1) + (l - 1)$ parâmetros independentes e é descrito por:
 
 \begin{equation}
     P[X_{t}=j_{0} \mid X_{t-1}=j_{1}, \dots, X_{t-l}=j_{l}] = \sum_{i=1}^{l}\lambda_{i}q_{j_{0}j_{i}}
@@ -661,7 +665,8 @@ passados ($X_{t-1}, X_{t-2}, \dots, X_{t-l}$).
 
 Alternativamente, o modelo pode ser representado em sua forma matricial. Para tanto, define-se o vetor coluna $X_t = (X_t(1), \dots, X_t(m))^\prime$, onde $X_t(j) = 1$ 
 se o processo estiver no estado $j$ no instante $t$, e $0$ caso contrário. Analogamente, seja $\hat{X}_t = (\hat{X}_t(1), \dots, \hat{X}_t(m))^\prime$ o vetor cujos 
-elementos $\hat{X}_t(j)$ representam a probabilidade condicional $P[X_t = j \mid X_{t-1} = j_1, X_{t-2} = j_2, \dots]$. Desse modo, a formulação linear pode ser reescrita como:
+elementos $\hat{X}_t(j)$ representam a probabilidade condicional $P[X_t = j \mid X_{t-1} = j_1, X_{t-2} = j_2, \dots]$. Desse modo, a formulação linear pode ser 
+reescrita como:
 
 \begin{equation}
     \hat{X}_t = \sum_{i = 1}^{l} \lambda_i Q X_{t-i}
@@ -670,13 +675,15 @@ elementos $\hat{X}_t(j)$ representam a probabilidade condicional $P[X_t = j \mid
 Note que, quando $l = 1$, a equação reduz-se a uma cadeia de Markov de primeira ordem clássica com matriz de transição $Q$. No entanto, adota-se aqui a convenção de 
 \citeonline{RAFTERY1985}, na qual a soma dos elementos de cada coluna de $Q$ é igual a 1, diferindo do enfoque tradicional estruturado por linhas.
 
-Para chegar nos melhores pesos para cada $t$ \citeonline{RAFTERY1985} utiliza do Critério de Informação Bayesiano, do inglês \textit{Bayesian Information Criterion} (BIC), com o objetivo de minimizar esse critério. O BIC é definido como:
+Para chegar nos melhores pesos para cada $t$ \citeonline{RAFTERY1985} utiliza do Critério de Informação Bayesiano, do inglês \textit{Bayesian Information Criterion} 
+(BIC), com o objetivo de minimizar esse critério. O BIC é definido como:
 
 \begin{equation}
     BIC = -2LL + p \times log(n)    
 \end{equation}
 
-onde $LL$ é o logaritmo da função de verossimilhança do modelo, $p$ é o número de parâmetros independentes e $n$ é o número de componentes da função logaritmo de verossimilhança \cite{RAFTERY1985}
+onde $LL$ é o logaritmo da função de verossimilhança do modelo, $p$ é o número de parâmetros independentes e $n$ é o número de componentes da função logaritmo de 
+verossimilhança \cite{RAFTERY1985}
 
 \subsection{Modelos Ocultos de Markov (HMM)}
 
@@ -689,8 +696,9 @@ Um HMM consiste em dois processos estocásticos: o primeiro é a Cadeia de Marko
 probabilidades de transição, onde esses estados não são visíveis externamente (ou seja, são ocultos) e o segundo é um 
 processo estocástico que produz emissões observáveis atreladas a cada um dos estados \cite{Dymarski}.
 
-Os HMMs são comumente utilizados para a análise e observação de séries temporais em diferentes contextos. São aplicados na área de biologia molecular para a identificação de genes \cite{MA2026101729}, reconhecimento de fala para a modelagem de fonemas \cite{jm3}, dentre outras áreas \cite{Dymarski}. Neste trabalho, utilizaremos um modelo HMM aplicado ao setor financeiro,
-mais especificamente voltado aos ativos digitais (Bitcoin).
+Os HMMs são comumente utilizados para a análise e observação de séries temporais em diferentes contextos. São aplicados na área de biologia molecular para a 
+identificação de genes \cite{MA2026101729}, reconhecimento de fala para a modelagem de fonemas \cite{jm3}, dentre outras áreas \cite{Dymarski}. Neste trabalho, 
+utilizaremos um modelo HMM aplicado ao setor financeiro, mais especificamente voltado aos ativos digitais (Bitcoin).
 
 Para compreender a aplicação prática do HMM, é necessário detalhar a relação entre os dados visíveis (emissões observáveis)
 e os estados ocultos que o sistema infere de maneira indireta.
@@ -701,7 +709,8 @@ os estados ocultos e as observações (ou estados observáveis). Os estados obse
 direta da série temporal, refletindo as medições quantificáveis da realidade. Em contrapartida, os estados ocultos representam a dinâmica 
 interna e estocástica do sistema. Embora sejam invisíveis ao observador externo, esses estados ocultos governam o comportamento do 
 modelo e influenciam diretamente a distribuição de probabilidade responsável por gerar as emissões observáveis a cada instante \cite{Dymarski}. 
-No contexto desta pesquisa, essas emissões observáveis correspondem aos dados empíricos extraídos diretamente da série temporal, refletindo os retornos quantificáveis do ativo.
+No contexto desta pesquisa, essas emissões observáveis correspondem aos dados empíricos extraídos diretamente da série temporal, refletindo os retornos quantificáveis 
+do ativo.
 
 \begin{figure}[htbp]
     \centering
@@ -717,7 +726,9 @@ Nossos estados observáveis são as cores das bolas que conseguimos ver sair, no
 verde (\textit{GREEN}), azul (\textit{BLUE}), vermelho (\textit{RED}) e amarelo (\textit{YELLOW}), formando a sequência 
 de observações $O$.
 
-Nós sabemos que a cor da bola sorteada é influenciada de maneira indireta pela urna da qual ela foi retirada (Urna 1, Urna 2, \dots, Urna $N$). Como a urna escolhida a cada passo não é registrada diretamente na nossa sequência de observações (nós enxergamos apenas as cores das bolas sorteadas), essas urnas representam os estados ocultos do nosso sistema, sendo as responsáveis por emitir as probabilidades de observarmos cada cor (representadas pelas funções de emissão $P(COR) = b_n(m)$).
+Nós sabemos que a cor da bola sorteada é influenciada de maneira indireta pela urna da qual ela foi retirada (Urna 1, Urna 2, \dots, Urna $N$). Como a urna escolhida a 
+cada passo não é registrada diretamente na nossa sequência de observações (nós enxergamos apenas as cores das bolas sorteadas), essas urnas representam os estados 
+ocultos do nosso sistema, sendo as responsáveis por emitir as probabilidades de observarmos cada cor (representadas pelas funções de emissão $P(COR) = b_n(m)$).
 
 Compreendida a dinâmica intuitiva dos estados, a próxima etapa consiste em formalizar os componentes principais que
 definem um HMM.
@@ -978,7 +989,11 @@ normalizados e definiremos a seguinte relação:
 \end{equation}
 
 onde $r(t)$ é o retorno logarítmico no instante $t$, $\overline{r}$ é a média amostral dos retornos da série e $s$
-é o desvio padrão amostral. Os símbolos $-1$, $0$ e $1$ representam os movimentos de queda significante, oscilações pouco expressivas em torno da média e movimentos de alta significância, é necessário ressaltar que o trabalho avaliará a sensibilidade dos modelos também a limiares mais estreitos, como $\frac{s}{4}$ e $\frac{s}{5}$, o objetivo é garantir que o estado $0$ represente exclusivamente o ruído branco da microestrutura do mercado, reduzindo o desbalanceamento das classes. A discretização será aplicada separadamente sobre dois conjuntos distintos obtidos através da série dos retornos logarítmicos, conjunto de treinamento e teste, de maneira similar a \citeonline{Nascimento2023}, $95\%$ da série será separado para o treinamento dos modelos de predição e $5\%$ será reservado para o teste.
+é o desvio padrão amostral. Os símbolos $-1$, $0$ e $1$ representam os movimentos de queda significante, oscilações pouco expressivas em torno da média e movimentos de alta 
+significância, é necessário ressaltar que o trabalho avaliará a sensibilidade dos modelos também a limiares mais estreitos, como $\frac{s}{4}$ e $\frac{s}{5}$, o 
+objetivo é garantir que o estado $0$ represente exclusivamente o ruído branco da microestrutura do mercado, reduzindo o desbalanceamento das classes. A discretização 
+será aplicada separadamente sobre dois conjuntos distintos obtidos através da série dos retornos logarítmicos, conjunto de treinamento e teste, de maneira similar a 
+\citeonline{Nascimento2023}, $95\%$ da série será separado para o treinamento dos modelos de predição e $5\%$ será reservado para o teste.
 
 
 \subsubsection{Granularidade e viabilidade estatística}
@@ -1041,8 +1056,8 @@ Precisão denota a proporção de casos preditos positivos que foram preditos co
 \end{equation}
 
 \subsubsection{\textit{F1-Score}}
-A medida F1 efetivamente relaciona a proporção de Verdadeiros Positivos (\textit{True Positives}) à média aritmética das previsões positivas (\textit{Predicted Positives}) 
-e dos casos reais positivos (\textit{Real Positives}), é descrita como: 
+A medida F1 efetivamente relaciona a proporção de Verdadeiros Positivos (\textit{True Positives}) à média aritmética das previsões positivas (\textit{Predicted 
+Positives}) e dos casos reais positivos (\textit{Real Positives}), é descrita como: 
 
 \begin{equation}
     F1 = tp / (tp + (fn + fp) / 2)
@@ -1065,11 +1080,16 @@ generalizadas ao atender dois requisitos:
 \subsection{Trabalho 1: Reconstructing Cryptocurrency Processes via Markov Chains}
 \label{sec:trabalho1_araujo}
 
-O estudo de \citeonline{ARAUJO}, intitulado \textit{Reconstructing Cryptocurrency Processes via Markov Chains} e publicado no periódico \textit{Computational Economics (Springer Nature)}, possui forte alinhamento com os objetivos deste trabalho. A pesquisa busca reconstruir e prever os processos estocásticos de três das principais criptomoedas do mercado Bitcoin, Ethereum e Ripple, investigando a existência de componentes de memória de longo alcance em suas séries temporais \cite{ARAUJO}.
+O estudo de \citeonline{ARAUJO}, intitulado \textit{Reconstructing Cryptocurrency Processes via Markov Chains} e publicado no periódico \textit{Computational Economics 
+(Springer Nature)}, possui forte alinhamento com os objetivos deste trabalho. A pesquisa busca reconstruir e prever os processos estocásticos de três das principais 
+criptomoedas do mercado Bitcoin, Ethereum e Ripple, investigando a existência de componentes de memória de longo alcance em suas séries temporais \cite{ARAUJO}.
 
-A motivação dos autores é tanto técnica quanto empírica. Eles constatam a inviabilidade estatística de utilizar livremente Cadeias de Markov de ordem elevada na predição de séries financeiras, uma vez que o número de combinações possíveis (blocos) cresce exponencialmente com o aumento da ordem, superando rapidamente o tamanho da amostra disponível.
+A motivação dos autores é tanto técnica quanto empírica. Eles constatam a inviabilidade estatística de utilizar livremente Cadeias de Markov de ordem elevada na 
+predição de séries financeiras, uma vez que o número de combinações possíveis (blocos) cresce exponencialmente com o aumento da ordem, superando rapidamente o tamanho 
+da amostra disponível.
 
-Para contornar essas limitações, a análise é fundamentada em fechamentos intradiários de uma hora. Inicialmente, os autores utilizam um alfabeto discreto de cinco símbolos, construído com base na média ($\overline{r(t)}$) e no desvio padrão ($s$) dos retornos, estruturado da seguinte forma:
+Para contornar essas limitações, a análise é fundamentada em fechamentos intradiários de uma hora. Inicialmente, os autores utilizam um alfabeto discreto de cinco 
+símbolos, construído com base na média ($\overline{r(t)}$) e no desvio padrão ($s$) dos retornos, estruturado da seguinte forma:
 
 \begin{equation}
     \begin{aligned}
@@ -1082,9 +1102,13 @@ Para contornar essas limitações, a análise é fundamentada em fechamentos int
     \label{eq:alfabeto_cinco_araujo}
 \end{equation}
 
-Mesmo com o alfabeto de cinco caracteres, observou-se que o crescimento exponencial inerente às cadeias de alta ordem compromete a viabilidade estatística do modelo para dimensões $k \geq 4$. Nesse ponto, o tamanho da amostra de treinamento torna-se inferior ao conjunto de possibilidades, o que faria o modelo falhar diante de sequências de observações inéditas. 
+Mesmo com o alfabeto de cinco caracteres, observou-se que o crescimento exponencial inerente às cadeias de alta ordem compromete a viabilidade estatística do modelo 
+para dimensões $k \geq 4$. Nesse ponto, o tamanho da amostra de treinamento torna-se inferior ao conjunto de possibilidades, o que faria o modelo falhar diante de 
+sequências de observações inéditas. 
 
-Para mitigar esse problema, \citeonline{ARAUJO} adotam a abordagem proposta por \citeonline{MENDES}, conhecida como \textit{Less-than-k-Markov}. Esse método recorre a probabilidades de matrizes de ordens menores $\{ k-1, k-2, k-3, ..., 2 \}$ de forma iterativa quando uma sequência específica de tamanho $k$ não é encontrada na amostra histórica.
+Para mitigar esse problema, \citeonline{ARAUJO} adotam a abordagem proposta por \citeonline{MENDES}, conhecida como \textit{Less-than-k-Markov}. Esse método recorre a 
+probabilidades de matrizes de ordens menores $\{ k-1, k-2, k-3, ..., 2 \}$ de forma iterativa quando uma sequência específica de tamanho $k$ não é encontrada na amostra 
+histórica.
 
 \begin{figure}[htbp]
     \centering
@@ -1094,7 +1118,9 @@ Para mitigar esse problema, \citeonline{ARAUJO} adotam a abordagem proposta por 
     \label{fig:grafico_kblocos}
 \end{figure}
 
-Os autores concluem, através da análise de acurácia do modelo para o alfabeto de cinco símbolos, que o algoritmo performa consistentemente melhor em comparação ao modelo de predição aleatório para todas as criptomoedas utilizadas na análise, conforme ilustrado na Figura~\ref{fig:Araujo_cinco_simbolos}. Esse comportamento sugere que o componente de memória de curto prazo se manifesta de maneira robusta e similar no mercado de ativos digitais.
+Os autores concluem, através da análise de acurácia do modelo para o alfabeto de cinco símbolos, que o algoritmo performa consistentemente melhor em comparação ao 
+modelo de predição aleatório para todas as criptomoedas utilizadas na análise, conforme ilustrado na Figura~\ref{fig:Araujo_cinco_simbolos}. Esse comportamento sugere 
+que o componente de memória de curto prazo se manifesta de maneira robusta e similar no mercado de ativos digitais.
 
 \begin{figure}[htbp]
     \centering
@@ -1104,7 +1130,8 @@ Os autores concluem, através da análise de acurácia do modelo para o alfabeto
     \label{fig:Araujo_cinco_simbolos}
 \end{figure}
 
-Influenciados pela necessidade de caracterizar de maneira mais satisfatória a presença de pequenas flutuações e ruídos, além de buscar uma melhora na estabilidade estatística do treinamento, os autores testaram uma segunda configuração utilizando um alfabeto discreto constituído de três símbolos
+Influenciados pela necessidade de caracterizar de maneira mais satisfatória a presença de pequenas flutuações e ruídos, além de buscar uma melhora na estabilidade 
+estatística do treinamento, os autores testaram uma segunda configuração utilizando um alfabeto discreto constituído de três símbolos
 
 \begin{equation}
     \begin{aligned}
@@ -1127,15 +1154,25 @@ Ao agrupar flutuações pouco expressivas em torno da média, essa estratégia d
 
 O presente trabalho utilizará um alfabeto discreto construído de maneira metodologicamente similar ao referencial de três símbolos conforme apresentado na Seção~\ref{discretizacao}. Porém, a análise intradia será realizada para uma escala de alta frequência, utilizando fechamentos em janelas de cinco minutos.
 
-Para contornar a explosão combinatória e os limites computacionais que restringiram o avanço da ordem preditiva no estudo de \citeonline{ARAUJO}, esta pesquisa empregará a modelagem baseada em Cadeias de Markov de alta ordem proposta por \citeonline{RAFTERY1985}. A adoção deste modelo reduz a complexidade para uma taxa linear, tornando viável a investigação de dependências temporais em ordens substancialmente maiores do que as apresentadas na literatura de referência, sem sacrificar a confiabilidade preditiva do sistema.
+Para contornar a explosão combinatória e os limites computacionais que restringiram o avanço da ordem preditiva no estudo de \citeonline{ARAUJO}, esta pesquisa 
+empregará a modelagem baseada em Cadeias de Markov de alta ordem proposta por \citeonline{RAFTERY1985}. A adoção deste modelo reduz a complexidade dos modelos de Markov de Alta 
+Ordem, tornando viável a investigação de dependências temporais em ordens substancialmente maiores do que as apresentadas na literatura de referência, sem sacrificar a 
+confiabilidade preditiva do sistema.
 
 \subsection{Trabalho 2: Extracting Rules via Markov Chains for Cryptocurrencies Returns Forecasting}
 
-O estudo de \citeonline{NASCIMENTO}, intitulado Extracting Rules via Markov Chains for Cryptocurrencies Returns Forecasting e publicado no periódico Computational Economics, possui forte alinhamento com os objetivos deste trabalho. Em sua pesquisa, os autores utilizam Cadeias de Markov de alta ordem para extrair regras das dinâmicas de retorno de quatro criptomoedas do mercado: Bitcoin, Ethereum, Litecoin e Ripple. O estudo analisou os preços diários de fechamento em dólar, no período de 1º de outubro de 2016 a 30 de novembro de 2019, totalizando 1156 observações para cada ativo.
+O estudo de \citeonline{NASCIMENTO}, intitulado Extracting Rules via Markov Chains for Cryptocurrencies Returns Forecasting e publicado no periódico Computational 
+Economics, possui forte alinhamento com os objetivos deste trabalho. Em sua pesquisa, os autores utilizam Cadeias de Markov de alta ordem para extrair regras das 
+dinâmicas de retorno de quatro criptomoedas do mercado: Bitcoin, Ethereum, Litecoin e Ripple. O estudo analisou os preços diários de fechamento em dólar, no período de 
+1º de outubro de 2016 a 30 de novembro de 2019, totalizando 1156 observações para cada ativo.
 
-A principal motivação do estudo é determinar possíveis cenários futuros analisando a dependência de memória na dinâmica do processo, obtendo regras de transição de estados a partir das informações do conjunto de dados. Para isso, os autores constroem um modelo preditivo baseado nos retornos logarítmicos dos preços através da equação $r_t = log(z_t) - log(z_{t-1})$, onde $z_t$ corresponde ao valor observado no dia atual e $z_{t-1}$ ao valor observado no dia anterior.
+A principal motivação do estudo é determinar possíveis cenários futuros analisando a dependência de memória na dinâmica do processo, obtendo regras de transição de 
+estados a partir das informações do conjunto de dados. Para isso, os autores constroem um modelo preditivo baseado nos retornos logarítmicos dos preços através da 
+equação $r_t = log(z_t) - log(z_{t-1})$, onde $z_t$ corresponde ao valor observado no dia atual e $z_{t-1}$ ao valor observado no dia anterior.
 
-Para realizar a análise, Nascimento descreve a necessidade de categorizar a série e enfatiza que a granularidade dos dados pode influenciar os resultados. Desse modo, foram testadas quatro granularidades (0,1; 0,01; 0,001 e 0,0001) com a finalidade de discretizar os retornos e encontrar o melhor ajuste para as séries temporais. Essas granularidades representam os intervalos numéricos onde a série será categorizada, sendo o escopo total definido entre o menor e o maior valor da série temporal, subtraindo e somando o valor da respectiva granularidade.
+Para realizar a análise, Nascimento descreve a necessidade de categorizar a série e enfatiza que a granularidade dos dados pode influenciar os resultados. Desse modo, 
+foram testadas quatro granularidades (0,1; 0,01; 0,001 e 0,0001) com a finalidade de discretizar os retornos e encontrar o melhor ajuste para as séries temporais. 
+Essas granularidades representam os intervalos numéricos onde a série será categorizada, sendo o escopo total definido entre o menor e o maior valor da série temporal, subtraindo e somando o valor da respectiva granularidade.
 
 Uma vez que a série temporal é classificada, os autores definem os estados de transição da matriz de forma que o número de estados para cada granularidade seja equivalente ao número total de categorias menos um. Como exemplo, para a série do Bitcoin com granularidade 0,1, o intervalo de categorização obtido foi de $[-0{,}286095194;\ 0{,}324052773]$. Nesse cenário, foram geradas seis categorias, resultando em cinco possíveis estados para a matriz de transição.
 
